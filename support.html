@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Woah</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --subtle: #555555;
+    --faint: #888888;
+    --border: #e0e0e0;
+    --accent: #1a1a1a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111111;
+      --fg: #f0f0f0;
+      --subtle: #aaaaaa;
+      --faint: #666666;
+      --border: #2a2a2a;
+      --accent: #f0f0f0;
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--fg);
+    background: var(--bg);
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  header p { color: var(--subtle); font-size: 14px; margin-top: 8px; }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  h2 { font-size: 18px; font-weight: 600; margin-top: 36px; margin-bottom: 8px; }
+  p { margin-bottom: 14px; color: var(--fg); }
+  a { color: var(--accent); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+  .contact {
+    background: #f5f5f5;
+    border-left: 3px solid #1a1a1a;
+    padding: 16px 20px;
+    margin: 24px 0 8px;
+    border-radius: 0 8px 8px 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .contact { background: #1e1e1e; border-left-color: #f0f0f0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="label">Woah Recovery App</p>
+  <h1>Support</h1>
+  <p>Help, answers, and how to get in touch.</p>
+</header>
+
+<p>Woah is a recovery-tracking app that reads your sleep, heart-rate variability, resting heart rate, and other signals from Apple Health to give you a daily recovery score and one clear daily message. If you need help, the fastest way to reach us is by email — we read and reply to every message.</p>
+
+<div class="contact">
+  <strong>Contact us:</strong> <a href="mailto:petter.hoglander@gmail.com">petter.hoglander@gmail.com</a><br>
+  We typically reply within 1–2 business days.
+</div>
+
+<h2>My recovery score isn't showing</h2>
+<p>Woah needs Apple Health data — ideally sleep and heart-rate variability from a wearable (Apple Watch, Garmin, Oura, Whoop, etc.). If your device has no data yet, the main screen shows a waiting state. You can tap <strong>"Enter data manually"</strong> on the main screen to enter values and see the full experience. Make sure Woah has permission in <em>Settings → Privacy &amp; Security → Health → Woah</em>.</p>
+
+<h2>How do I connect a partner?</h2>
+<p>Open the partner tab and either share your 6-character code or enter your partner's code. Both people must agree to pair. You can disconnect at any time from within the app.</p>
+
+<h2>How do I manage or cancel my subscription?</h2>
+<p>The partner feature is an auto-renewable subscription. You can manage or cancel it, and turn off auto-renewal, in your <strong>Apple ID Account Settings</strong> (Settings → your name → Subscriptions). Solo use of Woah is free.</p>
+
+<h2>How do I delete my data?</h2>
+<p>Open the <strong>•••</strong> menu → <strong>Profile</strong> → scroll down → <strong>Delete my data</strong>. This permanently removes your profile, history, partner connections, and all synced data from your device and iCloud.</p>
+
+<h2>Is Woah a medical device?</h2>
+<p>No. Woah is a general wellness and recovery-tracking tool. It does not diagnose, treat, or provide medical advice. Always consult a qualified healthcare professional for medical decisions.</p>
+
+<hr>
+
+<p>See also: <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+
+</body>
+</html>
