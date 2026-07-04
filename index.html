@@ -15,6 +15,7 @@
   :root {
     --gold: #D4B776;
     --bg: #000;
+    --serif: "New York", ui-serif, Georgia, serif;
     --shot-w: clamp(168px, 21vw, 230px);
     --gap: clamp(14px, 2vw, 28px);
   }
@@ -24,10 +25,115 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100svh;
     display: flex; flex-direction: column; align-items: center;
-    justify-content: flex-start; gap: clamp(26px, 5vh, 46px);
-    padding-top: clamp(60px, 12vh, 128px);
-    padding-bottom: clamp(32px, 6vh, 64px);
     overflow-x: hidden;
+  }
+
+  /* ================= Hero ================= */
+  .hero {
+    position: relative; width: 100%;
+    min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(18px, 3.2vh, 30px);
+    padding: clamp(48px, 9vh, 96px) 22px clamp(40px, 7vh, 72px);
+    text-align: center;
+  }
+  /* Barely-there gold bloom behind the orb — depth without noise */
+  .hero::before {
+    content: ""; position: absolute; left: 50%; top: 58%;
+    width: min(88vw, 720px); aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(212,183,118,0.07), rgba(212,183,118,0.02) 42%, transparent 68%);
+    pointer-events: none;
+  }
+
+  .brand {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.44em; text-indent: 0.44em; /* indent re-centres tracked text */
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: clamp(38px, 7.2vw, 68px);
+    line-height: 1.08; letter-spacing: -0.015em;
+    max-width: 15ch;
+  }
+
+  .sub {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(16px, 2vw, 19px); line-height: 1.55;
+    color: rgba(255,255,255,0.58);
+    max-width: 40ch;
+  }
+
+  /* Orb with score read-out — the product itself, front and centre */
+  .orb-wrap {
+    position: relative;
+    width: clamp(220px, 30vh, 280px); aspect-ratio: 1;
+    display: grid; place-items: center;
+    margin-block: clamp(4px, 1.5vh, 14px);
+  }
+  .orb-wrap canvas { width: 100%; height: 100%; display: block; }
+  .orb-wrap.no-gl canvas { display: none; }
+  .orb-wrap.no-gl::before {
+    content: ""; position: absolute; inset: 9%;
+    border-radius: 50%;
+    border: 1px solid rgba(84,214,138,0.4);
+    box-shadow: 0 0 44px rgba(84,214,138,0.22), inset 0 0 44px rgba(84,214,138,0.12);
+  }
+  .orb-score {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px; pointer-events: none;
+  }
+  .orb-score .eyebrow {
+    font-size: 10px; letter-spacing: 0.16em; text-indent: 0.16em; font-weight: 500;
+    text-transform: uppercase; color: rgba(255,255,255,0.42);
+    transform: translateY(4px);
+  }
+  .orb-score .num {
+    display: inline-flex; align-items: baseline; gap: 1px;
+    font-family: var(--serif); font-style: italic; font-weight: 200;
+    font-size: clamp(56px, 8vh, 72px); line-height: 1;
+    color: #fff; font-variant-numeric: tabular-nums;
+  }
+  .orb-score .num small { font-size: 0.42em; font-weight: 200; color: rgba(255,255,255,0.9); }
+  .orb-score .state {
+    font-size: 15px; letter-spacing: 0.18em; text-indent: 0.18em; font-weight: 600;
+    text-transform: uppercase; color: rgba(255,255,255,0.42);
+    transform: translateY(-3px);
+  }
+
+  /* Slow, staggered rise-in — premium pace, never snappy */
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hero > * { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .hero > *:nth-child(2) { animation-delay: 0.08s; }
+  .hero > *:nth-child(3) { animation-delay: 0.18s; }
+  .hero > *:nth-child(4) { animation-delay: 0.30s; }
+  .hero > *:nth-child(5) { animation-delay: 0.44s; }
+  .hero > *:nth-child(6) { animation-delay: 0.58s; }
+
+  .scroll-cue {
+    position: absolute; bottom: clamp(14px, 3vh, 30px); left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.30);
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both;
+  }
+  .scroll-cue svg { width: 18px; height: 18px; stroke: currentColor; }
+  @keyframes drift { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
+  .scroll-cue { animation: rise 0.9s cubic-bezier(0.22,1,0.36,1) 1.1s both, drift 2.6s ease-in-out 2.2s infinite; }
+
+  /* ================= Gallery section ================= */
+  .showcase {
+    width: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    gap: clamp(26px, 5vh, 46px);
+    padding-top: clamp(30px, 6vh, 56px);
+    padding-bottom: clamp(32px, 6vh, 64px);
+  }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase;
+    color: rgba(212,183,118,0.75);
   }
 
   /* ---- Screenshot gallery: a centred trio (3 at a time) ---- */
@@ -85,14 +191,15 @@
   .dots button.on { background: #fff; width: 24px; border-radius: 4px; }
   .dots button:hover { background: rgba(255,255,255,0.5); }
   .dots button.on:hover { background: #fff; }
+  .dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
   /* ---- App Store CTA ---- */
   .cta {
     position: relative; display: inline-flex; align-items: center; gap: 10px;
     padding: 15px 30px; border-radius: 999px;
-    font-family: "New York", ui-serif, Georgia, serif;
+    font-family: var(--serif);
     font-size: 17px; font-weight: 500; letter-spacing: 0.04em;
-    color: #fff; text-decoration: none;
+    color: #fff; text-decoration: none; cursor: pointer;
     background: rgba(255,255,255,0.10);
     backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid rgba(255,255,255,0.18);
@@ -103,43 +210,200 @@
     background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0) 46%); mix-blend-mode: screen; }
   .cta:hover { background: rgba(255,255,255,0.16); transform: translateY(-1px); }
   .cta:active { transform: scale(0.985); }
+  .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
   .cta svg { width: 17px; height: 20px; fill: #fff; margin-top: -3px; }
+
+  /* ---- QR popover: desktop-only, revealed on hover/focus of the CTA ---- */
+  .cta-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; }
+  .qr-pop { display: none; }
+  @media (hover: hover) and (pointer: fine) and (min-width: 681px) {
+    .qr-pop {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      position: absolute; left: calc(100% + 18px); top: 50%;
+      padding: 14px 14px 12px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(212,183,118,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 18px 54px rgba(0,0,0,0.55);
+      opacity: 0; transform: translate(-10px, -50%) scale(0.97);
+      pointer-events: none;
+      transition: opacity .38s cubic-bezier(0.22, 1, 0.36, 1), transform .38s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cta-group:hover .qr-pop,
+    .cta-group:focus-within .qr-pop {
+      opacity: 1; transform: translate(0, -50%) scale(1);
+      pointer-events: auto;
+    }
+    .qr-pop svg { width: 128px; height: 128px; border-radius: 12px; display: block; }
+    .qr-pop .qr-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-indent: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); white-space: nowrap;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .qr-pop { transition: opacity .2s ease; transform: translate(0, -50%) scale(1); }
+  }
 
   .legal { font-size: 12px; color: rgba(255,255,255,0.32); text-align: center; }
   .legal a { color: inherit; text-decoration: none; margin: 0 7px; }
   .legal a:hover { color: rgba(255,255,255,0.6); }
+  .legal a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero > *, .scroll-cue { animation: none; }
     .shot { transition: opacity .2s ease; }
   }
 </style>
 </head>
 <body>
-  <div class="gallery">
-    <div class="track" id="track">
-      <figure class="shot"><img src="screens/screen-1.jpg" alt="Finally understand your wearable data" loading="eager" decoding="async" /></figure>
-      <figure class="shot"><img src="screens/screen-2.jpg" alt="A clear recovery score every morning — 70 out of 100, caution" loading="eager" decoding="async" /></figure>
-      <figure class="shot"><img src="screens/screen-3.jpg" alt="Your whole day, answered — train, sickness, sleep and movement" loading="lazy" decoding="async" /></figure>
-      <figure class="shot"><img src="screens/screen-4.jpg" alt="See how your partner is doing" loading="lazy" decoding="async" /></figure>
-      <figure class="shot"><img src="screens/screen-5.jpg" alt="All your health, decoded — recovery, lifestyle, sleep debt, habits and trends" loading="lazy" decoding="async" /></figure>
-      <figure class="shot"><img src="screens/screen-6.jpg" alt="Gentle by design — calm, personal daily notifications" loading="lazy" decoding="async" /></figure>
+  <header class="hero">
+    <div class="brand">Woah</div>
+    <h1>Know what your body needs.</h1>
+    <p class="sub">One clear recovery score, and one honest message, every morning — from the numbers your wearable already collects.</p>
+    <div class="orb-wrap" id="orbWrap" role="img" aria-label="Woah recovery orb showing today's score: 83 out of 100, ready">
+      <canvas id="orb" aria-hidden="true"></canvas>
+      <div class="orb-score" aria-hidden="true">
+        <div class="eyebrow">Today</div>
+        <div class="num">83<small>/100</small></div>
+        <div class="state">Ready</div>
+      </div>
     </div>
-  </div>
+    <div class="cta-group">
+      <a class="cta" href="https://apps.apple.com/se/app/woah-recovery/id6776171727" aria-label="Woah on the App Store">
+        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        App Store
+      </a>
+      <div class="qr-pop" role="img" aria-label="QR code — scan with your phone to open Woah on the App Store">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges" aria-hidden="true"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h1m1 0h1m4 0h5m2 0h7M4 5.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m3 0h6m2 0h3m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h3m4 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h1m1 0h1m2 0h1m4 0h2m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h1m2 0h7M4 12.5h1m1 0h2m1 0h3m3 0h1m1 0h2m1 0h3m3 0h1m2 0h1m1 0h2M5 13.5h2m1 0h2m2 0h1m1 0h1m1 0h1m2 0h2m2 0h4m1 0h1m3 0h1M4 14.5h1m5 0h4m2 0h1m1 0h2m1 0h1m3 0h2m1 0h1m1 0h2M5 15.5h1m1 0h1m3 0h2m4 0h4m11 0h1M4 16.5h1m2 0h4m1 0h1m1 0h3m4 0h1m5 0h1m1 0h2M5 17.5h1m1 0h1m1 0h1m2 0h6m2 0h4m2 0h1m3 0h3M4 18.5h2m1 0h1m1 0h7m2 0h1m1 0h1m2 0h1m2 0h1m3 0h3M4 19.5h1m3 0h2m2 0h1m1 0h1m1 0h2m4 0h3m3 0h1m2 0h1M4 20.5h4m2 0h2m2 0h1m4 0h2m2 0h3m2 0h2m1 0h1M6 21.5h1m1 0h1m2 0h1m2 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3M4 22.5h1m4 0h2m1 0h1m2 0h1m4 0h2m2 0h2m2 0h1m1 0h1M6 23.5h4m1 0h1m2 0h1m1 0h1m3 0h3m4 0h1m2 0h1M5 24.5h8m3 0h2m2 0h11M12 25.5h1m3 0h3m2 0h2m1 0h1m3 0h5M4 26.5h7m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1M4 27.5h1m5 0h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m3 0h2m1 0h2M4 28.5h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m2 0h1m2 0h5m1 0h1m1 0h1M4 29.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h1M4 30.5h1m1 0h3m1 0h1m1 0h1m3 0h3m1 0h1m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1M4 31.5h1m5 0h1m2 0h1m2 0h1m2 0h1m2 0h1m1 0h2m1 0h3m1 0h1M4 32.5h7m1 0h4m2 0h1m1 0h2m1 0h2m2 0h1m3 0h1"/></svg>
+        <span class="qr-label">Scan to download</span>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 10l6 6 6-6"/></svg>
+    </div>
+  </header>
 
-  <div class="dots" id="dots" role="tablist" aria-label="Screenshot navigation"></div>
+  <section class="showcase" aria-label="Screenshots from the app">
+    <div class="section-eyebrow">A look inside</div>
+    <div class="gallery">
+      <div class="track" id="track">
+        <figure class="shot"><img src="screens/screen-1.jpg" alt="Finally understand your wearable data" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-2.jpg" alt="A clear recovery score every morning — 70 out of 100, caution" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-3.jpg" alt="Your whole day, answered — train, sickness, sleep and movement" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-4.jpg" alt="See how your partner is doing" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-5.jpg" alt="All your health, decoded — recovery, lifestyle, sleep debt, habits and trends" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-6.jpg" alt="Gentle by design — calm, personal daily notifications" loading="lazy" decoding="async" /></figure>
+      </div>
+    </div>
 
-  <a class="cta" href="https://apps.apple.com/se/app/woah-recovery/id6776171727" aria-label="Woah on the App Store">
-    <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-    App Store
-  </a>
+    <div class="dots" id="dots" role="tablist" aria-label="Screenshot navigation"></div>
 
-  <div class="legal">
-    <a href="mailto:petter.hoglander@gmail.com?subject=Woah%20support">Support</a>
-    <a href="https://petterhoglander-ai.github.io/woah-legal/privacy.html">Privacy</a>
-    <a href="https://petterhoglander-ai.github.io/woah-legal/terms.html">Terms</a>
-  </div>
+    <div class="legal">
+      <a href="mailto:petter.hoglander@gmail.com?subject=Woah%20support">Support</a>
+      <a href="https://petterhoglander-ai.github.io/woah-legal/privacy.html">Privacy</a>
+      <a href="https://petterhoglander-ai.github.io/woah-legal/terms.html">Terms</a>
+    </div>
+  </section>
 
 <script>
+  /* ================= Hero orb (WebGL, from the app's orb shader) ================= */
+  (function () {
+    const canvas = document.getElementById('orb');
+    const wrap = document.getElementById('orbWrap');
+    const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: true });
+    if (!gl) { wrap.classList.add('no-gl'); return; }
+
+    const VERT = `attribute vec2 aPos; varying vec2 vUv; void main(){ vUv=aPos*0.5+0.5; gl_Position=vec4(aPos,0.0,1.0); }`;
+    const FRAG = `
+precision highp float; varying vec2 vUv;
+uniform float uTime, uStatus, uGold; uniform vec2 uRes;
+#define PI 3.141592653589793
+float sat(float x){return clamp(x,0.0,1.0);} vec3 sat3(vec3 v){return clamp(v,0.0,1.0);}
+float hash21(vec2 p){p=fract(p*vec2(127.1,311.7));p+=dot(p,p+19.19);return fract(p.x*p.y);}
+float vnoise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);
+  return mix(mix(hash21(i),hash21(i+vec2(1.0,0.0)),u.x),mix(hash21(i+vec2(0.0,1.0)),hash21(i+vec2(1.0,1.0)),u.x),u.y);}
+vec3 thinFilm(float d,float n,float NoV){float sinI=sqrt(max(0.0,1.0-NoV*NoV));float sinT=sinI/n;
+  if(sinT>=1.0)return vec3(0.5);float cosT=sqrt(1.0-sinT*sinT);float opd=2.0*n*d*cosT;
+  vec3 lam=vec3(680.0,540.0,450.0);vec3 phase=2.0*PI*opd/lam;vec3 film=0.5+0.5*cos(phase);
+  return sat3(film*vec3(0.45,0.65,1.30));}
+void main(){
+  float t=uTime; float aspect=uRes.x/uRes.y;
+  vec2 p=vec2((vUv.x*2.0-1.0)*aspect,(vUv.y*2.0-1.0));
+  float ang=atan(p.y,p.x);
+  float wob=0.018*sin(2.0*ang+t*0.78)+0.010*sin(3.0*ang-t*0.58)+0.005*sin(5.0*ang+t*0.36)+0.003*sin(7.0*ang-t*0.47);
+  float breathe=1.0+0.010*sin(t*0.25+0.8); float R=(0.82+wob)*breathe;
+  float sdf=length(p)-R; float lightR=R;
+  if(sdf>0.05){ gl_FragColor=vec4(0.0); return; }
+  float edgeMask=smoothstep(0.05,-0.014,sdf);
+  float nz=sqrt(max(0.0,lightR*lightR-p.x*p.x-p.y*p.y));
+  vec3 N=normalize(vec3(p.x,p.y,nz)); float NoV=sat(dot(N,vec3(0.0,0.0,1.0)));
+  float rimBroad=pow(1.0-NoV,8.0); float rimNarrow=pow(1.0-NoV,14.0);
+  float n1=vnoise(vec2(ang*3.0+t*0.15,t*0.18)); float n2=vnoise(vec2(ang*5.5-t*0.22,t*0.09+2.0));
+  rimBroad*=0.62+0.28*n1+0.10*n2;
+  vec3 c1_recover=vec3(0.88,0.05,0.10),c1_caution=vec3(0.95,0.52,0.05),c1_ready=vec3(0.08,0.85,0.42);
+  vec3 c2_recover=vec3(0.62,0.03,0.16),c2_caution=vec3(0.85,0.20,0.04),c2_ready=vec3(0.04,0.58,0.70);
+  vec3 c3_recover=vec3(0.36,0.02,0.26),c3_caution=vec3(0.60,0.30,0.04),c3_ready=vec3(0.06,0.38,0.20);
+  float st=uStatus; float b1=sat(st*2.0); float b2=sat((st-0.5)*2.0);
+  vec3 rimC1_s=mix(mix(c1_recover,c1_caution,b1),c1_ready,b2);
+  vec3 rimC2_s=mix(mix(c2_recover,c2_caution,b1),c2_ready,b2);
+  vec3 rimC3_s=mix(mix(c3_recover,c3_caution,b1),c3_ready,b2);
+  vec3 c1_g=vec3(1.0,0.80,0.06),c2_g=vec3(0.95,0.40,0.02),c3_g=vec3(0.68,0.18,0.01);
+  float gm=uGold;
+  vec3 rimC1=mix(rimC1_s,c1_g,gm),rimC2=mix(rimC2_s,c2_g,gm),rimC3=mix(rimC3_s,c3_g,gm);
+  vec3 L1=normalize(vec3(cos(t*0.31),sin(t*0.31),0.55));
+  vec3 L2=normalize(vec3(cos(t*0.27+2.094),sin(t*0.27+2.094),0.45));
+  vec3 L3=normalize(vec3(cos(t*0.23+4.189),sin(t*0.23+4.189),0.60));
+  vec3 col=vec3(0.0);
+  float NdotL1=pow(max(0.0,dot(N,L1)),1.2)*(0.92+0.08*sin(t*0.22+1.3));
+  float NdotL2=pow(max(0.0,dot(N,L2)),1.6)*(0.90+0.10*sin(t*0.18+2.7));
+  float NdotL3=pow(max(0.0,dot(N,L3)),2.0);
+  col+=rimC1*NdotL1*rimBroad*1.20; col+=rimC2*NdotL2*rimBroad*0.90; col+=rimC3*NdotL3*rimBroad*0.55;
+  float d=195.0+46.0*sin(t*0.055)+22.0*sin(ang*2.0+t*0.14)+10.0*sin(ang*4.5-t*0.09);
+  d=clamp(d,145.0,280.0); vec3 film=thinFilm(d,1.35,NoV); col+=film*rimNarrow*mix(0.28,0.06,gm);
+  vec3 H=normalize(vec3(0.0,0.0,1.0)+L1); float spec=pow(sat(dot(N,H)),80.0);
+  vec3 specCol=mix(vec3(0.18,0.22,0.40),vec3(0.50,0.40,0.12),gm); col+=specCol*spec*rimNarrow*0.65;
+  col=col/(col+0.18); col=pow(max(col,vec3(0.0)),vec3(0.45));
+  float centerAlpha=0.20; float rimAlpha=pow(1.0-NoV,2.0);
+  float alpha=mix(centerAlpha,1.0,rimAlpha)*edgeMask;
+  gl_FragColor=vec4(col*alpha,alpha);
+}`;
+    function compile(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); return s; }
+    const prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT)); gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog); gl.useProgram(prog);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+    const uTime = gl.getUniformLocation(prog, 'uTime'), uRes = gl.getUniformLocation(prog, 'uRes');
+    const uStatus = gl.getUniformLocation(prog, 'uStatus'), uGold = gl.getUniformLocation(prog, 'uGold');
+    gl.uniform1f(uStatus, 0.95); gl.uniform1f(uGold, 0.0);
+
+    function resize() { const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = canvas.clientWidth * dpr, h = canvas.clientHeight * dpr;
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); } }
+    window.addEventListener('resize', resize);
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let rafId = null;
+    function draw(ms) { resize();
+      gl.uniform1f(uTime, ms * 0.001); gl.uniform2f(uRes, canvas.width, canvas.height);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); }
+    function frame(ms) { draw(ms); rafId = requestAnimationFrame(frame); }
+    function start() { if (rafId === null) rafId = requestAnimationFrame(frame); }
+    function stop() { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+
+    if (reduceMotion) { draw(4200); return; } /* single still frame */
+    start();
+    document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+    /* Pause the shader while the hero is scrolled out of view */
+    new IntersectionObserver(([e]) => { e.isIntersecting ? start() : stop(); }, { threshold: 0 }).observe(wrap);
+  })();
+
+  /* ================= Screenshot gallery ================= */
   const track = document.getElementById('track');
   const dotsEl = document.getElementById('dots');
   const shots = [...track.querySelectorAll('.shot')];
