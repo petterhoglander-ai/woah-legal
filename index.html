@@ -38,8 +38,11 @@
     --gold: #D4B776;
     --bg: #000;
     --serif: "New York", "Literata", ui-serif, Georgia, serif;
-    --shot-w: clamp(168px, 21vw, 230px);
-    --gap: clamp(14px, 2vw, 28px);
+    --line: rgba(255,255,255,0.10);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --shot-w: clamp(150px, 18vw, 208px);
+    --gap: clamp(14px, 2vw, 26px);
+    --orb-d: min(150vw, 1400px);
   }
   body {
     background: var(--bg); color: #fff;
@@ -50,22 +53,45 @@
     overflow-x: hidden;
   }
 
+  /* ================= The orb — a vast, breathing background presence.
+     Fixed behind everything; drifts and dissolves as you scroll. ========= */
+  .orb-bg {
+    position: fixed;
+    top: 50svh; left: 50%;
+    width: var(--orb-d); aspect-ratio: 1;
+    margin-top: calc(var(--orb-d) / -2);
+    margin-left: calc(var(--orb-d) / -2);
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  .orb-bg canvas { width: 100%; height: 100%; display: block; }
+  /* Barely-there gold bloom behind the ring — depth without noise */
+  .orb-bg::before {
+    content: ""; position: absolute; inset: 12%;
+    background: radial-gradient(circle, rgba(212,183,118,0.08), rgba(212,183,118,0.025) 42%, transparent 68%);
+  }
+  .orb-bg.no-gl::after {
+    content: ""; position: absolute; inset: 9%;
+    border-radius: 50%;
+    border: 1px solid rgba(84,214,138,0.30);
+    box-shadow: 0 0 90px rgba(84,214,138,0.16), inset 0 0 90px rgba(84,214,138,0.08);
+  }
+
+  /* Everything readable stacks above the orb */
+  .hero, .faq-section, .legal { position: relative; z-index: 1; }
+
   /* ================= Hero ================= */
   .hero {
-    position: relative; width: 100%;
+    width: 100%;
     min-height: 100svh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: clamp(18px, 3.2vh, 30px);
-    padding: clamp(48px, 9vh, 96px) 22px clamp(40px, 7vh, 72px);
+    display: flex; flex-direction: column; align-items: center;
+    /* safe center: falls back to start when content is taller than the viewport,
+       so the wordmark is never clipped above the scroll origin */
+    justify-content: safe center;
+    gap: clamp(15px, 2.4vh, 24px);
+    padding: clamp(40px, 7vh, 88px) 22px clamp(30px, 5vh, 56px);
     text-align: center;
-  }
-  /* Barely-there gold bloom behind the orb — depth without noise */
-  .hero::before {
-    content: ""; position: absolute; left: 50%; top: 58%;
-    width: min(88vw, 720px); aspect-ratio: 1;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(212,183,118,0.07), rgba(212,183,118,0.02) 42%, transparent 68%);
-    pointer-events: none;
   }
 
   .brand {
@@ -76,7 +102,7 @@
 
   h1 {
     font-family: var(--serif); font-style: italic; font-weight: 300;
-    font-size: clamp(38px, 7.2vw, 68px);
+    font-size: clamp(36px, 6.6vw, 62px);
     line-height: 1.08; letter-spacing: -0.015em;
     max-width: 15ch;
   }
@@ -88,78 +114,18 @@
     max-width: 40ch;
   }
 
-  /* Orb with score read-out — the product itself, front and centre */
-  .orb-wrap {
-    position: relative;
-    width: clamp(220px, 30vh, 280px); aspect-ratio: 1;
-    display: grid; place-items: center;
-    margin-block: clamp(4px, 1.5vh, 14px);
-  }
-  .orb-wrap canvas { width: 100%; height: 100%; display: block; }
-  .orb-wrap.no-gl canvas { display: none; }
-  .orb-wrap.no-gl::before {
-    content: ""; position: absolute; inset: 9%;
-    border-radius: 50%;
-    border: 1px solid rgba(84,214,138,0.4);
-    box-shadow: 0 0 44px rgba(84,214,138,0.22), inset 0 0 44px rgba(84,214,138,0.12);
-  }
-  .orb-score {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 4px; pointer-events: none;
-  }
-  .orb-score .eyebrow {
-    font-size: 10px; letter-spacing: 0.16em; text-indent: 0.16em; font-weight: 500;
-    text-transform: uppercase; color: rgba(255,255,255,0.48); /* ≥4.5:1 on black */
-    transform: translateY(4px);
-  }
-  .orb-score .num {
-    display: inline-flex; align-items: baseline; gap: 1px;
-    font-family: var(--serif); font-style: italic; font-weight: 200;
-    font-size: clamp(56px, 8vh, 72px); line-height: 1;
-    color: #fff; font-variant-numeric: tabular-nums;
-  }
-  .orb-score .num small { font-size: 0.42em; font-weight: 200; color: rgba(255,255,255,0.9); }
-  .orb-score .state {
-    font-size: 15px; letter-spacing: 0.18em; text-indent: 0.18em; font-weight: 600;
-    text-transform: uppercase; color: rgba(255,255,255,0.48); /* ≥4.5:1 on black */
-    transform: translateY(-3px);
-  }
-
   /* Slow, staggered rise-in — premium pace, never snappy */
   @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-  .hero > * { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .hero > * { animation: rise 0.9s var(--ease) both; }
   .hero > *:nth-child(2) { animation-delay: 0.08s; }
   .hero > *:nth-child(3) { animation-delay: 0.18s; }
   .hero > *:nth-child(4) { animation-delay: 0.30s; }
-  .hero > *:nth-child(5) { animation-delay: 0.44s; }
-  .hero > *:nth-child(6) { animation-delay: 0.58s; }
+  .hero > *:nth-child(5) { animation-delay: 0.46s; }
+  .hero > *:nth-child(6) { animation-delay: 0.60s; }
+  .hero > *:nth-child(7) { animation-delay: 0.72s; }
 
-  .scroll-cue {
-    position: absolute; bottom: clamp(14px, 3vh, 30px); left: 50%; transform: translateX(-50%);
-    color: rgba(255,255,255,0.30);
-    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both;
-  }
-  .scroll-cue svg { width: 18px; height: 18px; stroke: currentColor; }
-  @keyframes drift { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
-  .scroll-cue { animation: rise 0.9s cubic-bezier(0.22,1,0.36,1) 1.1s both, drift 2.6s ease-in-out 2.2s infinite; }
-
-  /* ================= Gallery section ================= */
-  .showcase {
-    width: 100%;
-    display: flex; flex-direction: column; align-items: center;
-    gap: clamp(26px, 5vh, 46px);
-    padding-top: clamp(30px, 6vh, 56px);
-    padding-bottom: clamp(32px, 6vh, 64px);
-  }
-  .section-eyebrow {
-    font-size: 12px; font-weight: 600;
-    letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase;
-    color: rgba(212,183,118,0.75);
-  }
-
-  /* ---- Screenshot gallery: a centred trio (3 at a time) ---- */
-  .gallery { width: 100%; display: flex; justify-content: center; }
+  /* ---- Screenshot gallery: the product, front and centre ---- */
+  .gallery { width: 100%; display: flex; justify-content: center; margin-top: clamp(4px, 1.4vh, 14px); }
   .track {
     display: flex; align-items: center;
     gap: var(--gap);
@@ -170,7 +136,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-block: 6px;
+    padding-block: 10px;
   }
   .track::-webkit-scrollbar { display: none; }
 
@@ -178,22 +144,25 @@
     flex: 0 0 var(--shot-w);
     width: var(--shot-w);
     scroll-snap-align: center;
-    border-radius: 28px;
+    border-radius: 26px;
     overflow: hidden;
     background: #0a0a0a;
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 20px 56px rgba(0,0,0,0.5);
-    transition: opacity .4s ease, box-shadow .4s ease;
+    transition: opacity .4s ease, box-shadow .4s ease, transform .4s var(--ease);
     opacity: 0.92;
   }
   .shot.active {
     opacity: 1;
     box-shadow: 0 26px 78px rgba(0,0,0,0.62), 0 0 0 1px rgba(212,183,118,0.22);
   }
+  @media (hover: hover) and (pointer: fine) {
+    .shot:hover { transform: translateY(-6px); opacity: 1; }
+  }
 
   /* ---- Mobile: one screenshot at a time ---- */
   @media (max-width: 680px) {
-    :root { --shot-w: min(80vw, 340px); }
+    :root { --shot-w: min(62vw, 300px); }
     .track { width: var(--shot-w); }
   }
   .shot img {
@@ -203,17 +172,24 @@
     pointer-events: none; user-select: none;
   }
 
-  /* ---- Page control (Apple-style dots) ---- */
-  .dots { display: flex; gap: 9px; align-items: center; }
+  /* ---- Page control (Apple-style dots, 18px hit areas) ---- */
+  .dots { display: flex; gap: 4px; align-items: center; }
   .dots button {
-    width: 7px; height: 7px; padding: 0; border: 0; cursor: pointer;
-    border-radius: 50%; background: rgba(255,255,255,0.36); /* ≥3:1 non-text contrast */
-    transition: all .35s ease;
+    position: relative;
+    width: 18px; height: 18px; padding: 0; border: 0; cursor: pointer;
+    background: transparent;
   }
-  .dots button.on { background: #fff; width: 24px; border-radius: 4px; }
-  .dots button:hover { background: rgba(255,255,255,0.5); }
-  .dots button.on:hover { background: #fff; }
-  .dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .dots button::before {
+    content: ""; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px; border-radius: 4px;
+    background: rgba(255,255,255,0.36); /* ≥3:1 non-text contrast */
+    transition: all .35s var(--ease);
+  }
+  .dots button.on::before { background: #fff; width: 22px; }
+  .dots button:hover::before { background: rgba(255,255,255,0.5); }
+  .dots button.on:hover::before { background: #fff; }
+  .dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
 
   /* ---- App Store CTA ---- */
   .cta {
@@ -250,7 +226,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 18px 54px rgba(0,0,0,0.55);
       opacity: 0; transform: translate(-10px, -50%) scale(0.97);
       pointer-events: none;
-      transition: opacity .38s cubic-bezier(0.22, 1, 0.36, 1), transform .38s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity .38s var(--ease), transform .38s var(--ease);
     }
     .cta-group:hover .qr-pop,
     .cta-group:focus-within .qr-pop {
@@ -264,34 +240,117 @@
       color: rgba(255,255,255,0.55); white-space: nowrap;
     }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .qr-pop { transition: opacity .2s ease; transform: translate(0, -50%) scale(1); }
+
+  .scroll-cue {
+    color: rgba(255,255,255,0.30);
+    margin-top: clamp(2px, 1vh, 10px);
+  }
+  .scroll-cue svg { width: 18px; height: 18px; stroke: currentColor; display: block; }
+  @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  .scroll-cue svg { animation: drift 2.6s ease-in-out 2.2s infinite; }
+
+  /* ================= Q&A section ================= */
+  .faq-section {
+    width: 100%; max-width: 720px;
+    padding: clamp(44px, 9vh, 110px) 22px clamp(40px, 7vh, 80px);
+    display: flex; flex-direction: column;
+  }
+  .faq-head { text-align: center; margin-bottom: clamp(24px, 4.5vh, 44px); }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase;
+    color: rgba(212,183,118,0.75);
+  }
+  .faq-head h2 {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: clamp(28px, 4.6vw, 42px);
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin-top: 14px;
   }
 
-  .legal { font-size: 12px; color: rgba(255,255,255,0.48); text-align: center; } /* ≥4.5:1 on black */
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-item:first-of-type { border-top: 1px solid var(--line); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 18px;
+    padding: 18px 2px;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(17px, 2.3vw, 20px); line-height: 1.4;
+    color: rgba(255,255,255,0.92);
+    transition: color .25s ease;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: #fff; }
+  summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  summary .mark {
+    flex: 0 0 auto; align-self: center;
+    width: 20px; height: 20px; position: relative;
+    opacity: 0.55; transition: transform .35s var(--ease), opacity .25s ease;
+  }
+  summary .mark::before, summary .mark::after {
+    content: ""; position: absolute; background: var(--gold);
+    top: 50%; left: 50%;
+  }
+  summary .mark::before { width: 14px; height: 1px; transform: translate(-50%, -50%); }
+  summary .mark::after  { width: 1px; height: 14px; transform: translate(-50%, -50%); }
+  .faq-item[open] summary .mark { transform: rotate(45deg); opacity: 0.9; }
+  .faq-item[open] summary { color: #fff; }
+  .answer {
+    padding: 0 34px 22px 2px;
+    font-size: 15.5px; line-height: 1.75;
+    color: rgba(255,255,255,0.66);
+    max-width: 62ch;
+  }
+  .answer a { color: rgba(212,183,118,0.9); text-decoration: none; }
+  .answer a:hover { text-decoration: underline; }
+
+  /* Scroll reveal — items rise in as they enter, once (JS adds .in) */
+  .js .faq-head, .js .faq-item, .js .all-link {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .6s var(--ease), transform .6s var(--ease);
+    transition-delay: calc(var(--i, 0) * 45ms);
+  }
+  .js .faq-head.in, .js .faq-item.in, .js .all-link.in { opacity: 1; transform: none; }
+
+  .all-link {
+    align-self: center;
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: clamp(24px, 4vh, 38px);
+    padding: 12px 6px;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--gold); text-decoration: none;
+  }
+  .all-link .arrow { display: inline-block; transition: transform .3s var(--ease); }
+  .all-link:hover .arrow { transform: translateX(5px); }
+  .all-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+  .legal { font-size: 12px; color: rgba(255,255,255,0.48); text-align: center; padding-bottom: 40px; } /* ≥4.5:1 on black */
   .legal a { color: inherit; text-decoration: none; margin: 0 7px; }
   .legal a:hover { color: rgba(255,255,255,0.75); }
   .legal a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero > *, .scroll-cue { animation: none; }
-    .shot { transition: opacity .2s ease; }
+    .hero > * { animation: none; }
+    .scroll-cue svg { animation: none; }
+    .shot, .qr-pop, summary .mark { transition: none; }
+    .js .faq-head, .js .faq-item, .js .all-link { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
 <body>
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- The orb, now the room itself: a vast presence behind the page that
+       dissolves as you scroll into the content. -->
+  <div class="orb-bg" id="orbBg" aria-hidden="true">
+    <canvas id="orb"></canvas>
+  </div>
+
   <header class="hero">
     <div class="brand">Woah</div>
     <h1>Know what your body needs.</h1>
     <p class="sub">One clear recovery score, and one honest message, every morning — from the numbers your wearable already collects.</p>
-    <div class="orb-wrap" id="orbWrap" role="img" aria-label="Woah recovery orb showing today's score: 83 out of 100, ready">
-      <canvas id="orb" aria-hidden="true"></canvas>
-      <div class="orb-score" aria-hidden="true">
-        <div class="eyebrow">Today</div>
-        <div class="num">83<small>/100</small></div>
-        <div class="state">Ready</div>
-      </div>
-    </div>
     <div class="cta-group">
       <a class="cta" href="https://apps.apple.com/se/app/woah-recovery/id6776171727" aria-label="Woah on the App Store">
         <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -302,18 +361,12 @@
         <span class="qr-label">Scan to download</span>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 10l6 6 6-6"/></svg>
-    </div>
-  </header>
 
-  <section class="showcase" aria-label="Screenshots from the app">
-    <div class="section-eyebrow">A look inside</div>
-    <div class="gallery">
+    <div class="gallery" aria-label="Screenshots from the app">
       <div class="track" id="track">
-        <figure class="shot"><img src="screens/screen-1.jpg" alt="Finally understand your wearable data" loading="lazy" decoding="async" /></figure>
-        <figure class="shot"><img src="screens/screen-2.jpg" alt="A clear recovery score every morning — 70 out of 100, caution" loading="lazy" decoding="async" /></figure>
-        <figure class="shot"><img src="screens/screen-3.jpg" alt="Your whole day, answered — train, sickness, sleep and movement" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-1.jpg" alt="Finally understand your wearable data" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-2.jpg" alt="A clear recovery score every morning — 70 out of 100, caution" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-3.jpg" alt="Your whole day, answered — train, sickness, sleep and movement" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-4.jpg" alt="See how your partner is doing" loading="lazy" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-5.jpg" alt="All your health, decoded — recovery, lifestyle, sleep debt, habits and trends" loading="lazy" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-6.jpg" alt="Gentle by design — calm, personal daily notifications" loading="lazy" decoding="async" /></figure>
@@ -322,24 +375,95 @@
 
     <div class="dots" id="dots" role="tablist" aria-label="Screenshot navigation"></div>
 
-    <div class="legal">
-      <a href="faq.html">FAQ</a>
-      <a href="mailto:petter@woah-recovery.app?subject=Woah%20support">Support</a>
-      <a href="https://petterhoglander-ai.github.io/woah-legal/privacy.html">Privacy</a>
-      <a href="https://petterhoglander-ai.github.io/woah-legal/terms.html">Terms</a>
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 10l6 6 6-6"/></svg>
     </div>
+  </header>
+
+  <section class="faq-section" aria-label="Questions and answers">
+    <div class="faq-head">
+      <div class="section-eyebrow">Questions, answered</div>
+      <h2>Everything you'd want to know.</h2>
+    </div>
+
+    <details class="faq-item" style="--i:0">
+      <summary>What is Woah?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Woah is an iOS app that turns the numbers from your wearable into one clear answer every morning: a recovery score from 0 to 100, and one honest message about what your body needs today. It reads your sleep, heart-rate variability, resting heart rate, breathing rate and activity from Apple Health, and does the interpretation for you.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:1">
+      <summary>What problem does Woah solve?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Wearables are great at collecting data and bad at telling you what it means. You wake up to a dashboard of graphs and still don't know: should I train today or rest? Woah replaces the dashboard with a single score, a plain-language explanation of why, and concrete guidance for the day. No jargon, no guesswork.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:2">
+      <summary>Which wearables work with Woah?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Any device that syncs to Apple Health: Apple Watch, Garmin, Oura, Whoop, Polar, Fitbit and others. Woah reads from Apple Health, so there are no separate accounts or logins. If a night looks wrong, you can correct sleep, steps or stress manually, and if you have no wearable you can enter values by hand.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:3">
+      <summary>How is the recovery score calculated?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The score weighs four overnight signals: sleep is the biggest part (about half), then heart-rate variability compared with your own baseline (about a third), and smaller contributions from resting heart rate and breathing rate. On top of that, life adjusts the result: high self-reported stress, a declining HRV trend, or alcohol and nicotine the evening before can cap how high the score can go, and recent hard training is factored in.</p><p>The result lands in one of three zones: Ready (75 and up), Caution (50–74), Recover (below 50).</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:4">
+      <summary>Why is my score compared to a baseline instead of a fixed target?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Because normal is personal. An HRV of 45 ms can be excellent for one person and low for another. Woah builds a rolling baseline from your own history and scores each morning against it, so the score tells you how you are doing relative to you.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:5">
+      <summary>What is "Today, answered"?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A block on the main screen that answers the day's practical questions directly from your data: Can I train today? How did I sleep? How much sleep am I behind? Should I drink tonight? Am I getting sick? The answers are computed from your numbers, never invented, and each one has a short AI comment behind the info icon that adds colour without ever contradicting the facts.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:6">
+      <summary>What is the Woah Coach?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A conversation with Woah itself, in its own tab. The coach sees up to a year of your data, helps you set real goals, and builds you a concrete weekly plan every Sunday evening. It checks in mid-week, remembers what you tell it, pulls up specific days on request and draws charts right in the chat. It is a wellness coach, not a doctor: it never diagnoses or gives medical advice.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:7">
+      <summary>What are the partner features?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>You pair with your partner using a 6-character code, and each of you sees how the other slept and how ready their day is, without needing to ask, and without exposing anything you choose to keep private. The Us view adds insights about the two of you together. You control exactly what is shared, and can pause sharing at any time.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:8">
+      <summary>What does Woah cost?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, "Today, answered", habit logging and streaks, smart notifications and share cards. Premium is one subscription that unlocks History and trends, the Lifestyle status, the AI coach, and the full partner experience — with a free trial to start.</p></div>
+    </details>
+
+    <details class="faq-item" style="--i:9">
+      <summary>Where does my health data live?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>On your iPhone and in your own iCloud. Woah has no servers of its own and never sells data. Your settings, habits and score history sync to your private iCloud so they survive a new phone, and raw Apple Health data is never uploaded anywhere by Woah.</p></div>
+    </details>
+
+    <a class="all-link" href="faq.html">All questions, answered<span class="arrow" aria-hidden="true">&rarr;</span></a>
   </section>
 
+  <div class="legal">
+    <a href="faq.html">FAQ</a>
+    <a href="mailto:petter@woah-recovery.app?subject=Woah%20support">Support</a>
+    <a href="https://petterhoglander-ai.github.io/woah-legal/privacy.html">Privacy</a>
+    <a href="https://petterhoglander-ai.github.io/woah-legal/terms.html">Terms</a>
+  </div>
+
 <script>
-  /* ================= Hero orb (WebGL, from the app's orb shader) ================= */
+  /* ================= Background orb (WebGL, from the app's orb shader) =================
+     Now a fixed, page-wide presence: full brightness at the top, dissolving
+     with a slow downward drift as you scroll into the content. */
   (function () {
     const canvas = document.getElementById('orb');
-    const wrap = document.getElementById('orbWrap');
+    const wrap = document.getElementById('orbBg');
     const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: true });
-    if (!gl) { wrap.classList.add('no-gl'); return; }
+    if (!gl) { wrap.classList.add('no-gl'); }
 
-    const VERT = `attribute vec2 aPos; varying vec2 vUv; void main(){ vUv=aPos*0.5+0.5; gl_Position=vec4(aPos,0.0,1.0); }`;
-    const FRAG = `
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let rafId = null, faded = false;
+
+    let start = () => {}, stop = () => {};
+
+    if (gl) {
+      const VERT = `attribute vec2 aPos; varying vec2 vUv; void main(){ vUv=aPos*0.5+0.5; gl_Position=vec4(aPos,0.0,1.0); }`;
+      const FRAG = `
 precision highp float; varying vec2 vUv;
 uniform float uTime, uStatus, uGold; uniform vec2 uRes;
 #define PI 3.141592653589793
@@ -392,38 +516,56 @@ void main(){
   float alpha=mix(centerAlpha,1.0,rimAlpha)*edgeMask;
   gl_FragColor=vec4(col*alpha,alpha);
 }`;
-    function compile(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); return s; }
-    const prog = gl.createProgram();
-    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT)); gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
-    gl.linkProgram(prog); gl.useProgram(prog);
-    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-    const aPos = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-    const uTime = gl.getUniformLocation(prog, 'uTime'), uRes = gl.getUniformLocation(prog, 'uRes');
-    const uStatus = gl.getUniformLocation(prog, 'uStatus'), uGold = gl.getUniformLocation(prog, 'uGold');
-    gl.uniform1f(uStatus, 0.95); gl.uniform1f(uGold, 0.0);
+      function compile(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); return s; }
+      const prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT)); gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+      gl.linkProgram(prog); gl.useProgram(prog);
+      const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+      const aPos = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+      const uTime = gl.getUniformLocation(prog, 'uTime'), uRes = gl.getUniformLocation(prog, 'uRes');
+      const uStatus = gl.getUniformLocation(prog, 'uStatus'), uGold = gl.getUniformLocation(prog, 'uGold');
+      gl.uniform1f(uStatus, 0.95); gl.uniform1f(uGold, 0.0);
 
-    function resize() { const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = canvas.clientWidth * dpr, h = canvas.clientHeight * dpr;
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); } }
-    window.addEventListener('resize', resize);
+      function resize() { const dpr = Math.min(window.devicePixelRatio || 1, 1.5); /* huge canvas — cap DPR lower */
+        const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); } }
+      window.addEventListener('resize', resize);
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let rafId = null;
-    function draw(ms) { resize();
-      gl.uniform1f(uTime, ms * 0.001); gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); }
-    function frame(ms) { draw(ms); rafId = requestAnimationFrame(frame); }
-    function start() { if (rafId === null) rafId = requestAnimationFrame(frame); }
-    function stop() { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+      function draw(ms) { resize();
+        gl.uniform1f(uTime, ms * 0.001); gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); }
+      function frame(ms) { draw(ms); rafId = requestAnimationFrame(frame); }
+      start = function () { if (rafId === null && !faded && !reduceMotion) rafId = requestAnimationFrame(frame); };
+      stop = function () { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } };
 
-    if (reduceMotion) { draw(4200); return; } /* single still frame */
-    start();
-    document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
-    /* Pause the shader while the hero is scrolled out of view */
-    new IntersectionObserver(([e]) => { e.isIntersecting ? start() : stop(); }, { threshold: 0 }).observe(wrap);
+      if (reduceMotion) { draw(4200); } /* single still frame */
+      else {
+        start();
+        document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+      }
+    }
+
+    /* Scroll = dissolve. Opacity and a slow downward drift, driven by rAF,
+       transform/opacity only. The shader pauses once fully faded. */
+    let ticking = false;
+    function applyScroll() {
+      ticking = false;
+      const y = window.scrollY;
+      const k = Math.min(1, y / (window.innerHeight * 0.72));
+      wrap.style.opacity = (1 - k).toFixed(3);
+      if (!reduceMotion) {
+        wrap.style.transform = 'translateY(' + (y * 0.14).toFixed(1) + 'px) scale(' + (1 + k * 0.05).toFixed(4) + ')';
+      }
+      faded = k >= 0.99;
+      if (faded) stop(); else start();
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(applyScroll); }
+    }, { passive: true });
+    applyScroll();
   })();
 
   /* ================= Screenshot gallery ================= */
@@ -485,6 +627,18 @@ void main(){
   // Start centred on the first screenshot
   window.addEventListener('load', () => { scrollToShot(0); setActive(0); });
   setActive(0);
+
+  /* ================= Q&A scroll reveal (once, staggered) ================= */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.faq-head, .faq-item, .all-link').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.faq-head, .faq-item, .all-link').forEach((el) => el.classList.add('in'));
+  }
 </script>
 </body>
 </html>
