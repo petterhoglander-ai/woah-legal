@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>FAQ — Woah</title>
+<meta name="description" content="Everything about Woah: how the recovery score works, what you can do with the app, what's free, what Premium includes, and how your data is handled." />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://petterhoglander-ai.github.io/woah-legal/faq.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta property="og:title" content="FAQ — Woah" />
+<meta property="og:description" content="How the recovery score works, what's free, what Premium includes, and how your data is handled." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://petterhoglander-ai.github.io/woah-legal/faq.html" />
+<meta property="og:image" content="https://petterhoglander-ai.github.io/woah-legal/og-image.png" />
+<style>
+  /* Serif fallback for non-Apple devices (New York is Apple-only). */
+  @font-face {
+    font-family: "Literata";
+    font-style: italic;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url("fonts/literata-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2013-2014, U+2018-201D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #D4B776;
+    --bg: #000;
+    --serif: "New York", "Literata", ui-serif, Georgia, serif;
+    --line: rgba(255,255,255,0.10);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: #fff;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* ================= Header ================= */
+  .top {
+    position: relative; width: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    gap: clamp(16px, 2.6vh, 24px);
+    padding: clamp(56px, 10vh, 110px) 22px clamp(36px, 6vh, 64px);
+    text-align: center;
+  }
+  /* Barely-there gold bloom — same depth cue as the hero */
+  .top::before {
+    content: ""; position: absolute; left: 50%; top: 40%;
+    width: min(88vw, 720px); aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(212,183,118,0.06), rgba(212,183,118,0.02) 42%, transparent 68%);
+    pointer-events: none;
+  }
+  .brand {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.44em; text-indent: 0.44em;
+    color: var(--gold); text-transform: uppercase;
+    text-decoration: none;
+  }
+  .brand:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  h1 {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: clamp(34px, 6.4vw, 58px);
+    line-height: 1.1; letter-spacing: -0.015em;
+    max-width: 16ch;
+  }
+  .sub {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(16px, 2vw, 19px); line-height: 1.55;
+    color: rgba(255,255,255,0.58);
+    max-width: 44ch;
+  }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .top > * { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .top > *:nth-child(2) { animation-delay: 0.08s; }
+  .top > *:nth-child(3) { animation-delay: 0.18s; }
+
+  /* ================= FAQ body ================= */
+  main {
+    width: 100%; max-width: 720px;
+    padding: 0 22px clamp(48px, 8vh, 88px);
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.3em; text-indent: 0.3em; text-transform: uppercase;
+    color: rgba(212,183,118,0.75);
+    margin: clamp(38px, 6vh, 58px) 0 10px;
+    text-align: center;
+  }
+  main .section-eyebrow:first-child { margin-top: clamp(10px, 2vh, 20px); }
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  details:first-of-type { border-top: 1px solid var(--line); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 18px;
+    padding: 18px 2px;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(17px, 2.3vw, 20px); line-height: 1.4;
+    color: rgba(255,255,255,0.92);
+    transition: color .25s ease;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: #fff; }
+  summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  summary .mark {
+    flex: 0 0 auto; align-self: center;
+    width: 20px; height: 20px; position: relative;
+    opacity: 0.55; transition: transform .35s cubic-bezier(0.22,1,0.36,1), opacity .25s ease;
+  }
+  summary .mark::before, summary .mark::after {
+    content: ""; position: absolute; background: var(--gold);
+    top: 50%; left: 50%;
+  }
+  summary .mark::before { width: 14px; height: 1px; transform: translate(-50%, -50%); }
+  summary .mark::after  { width: 1px; height: 14px; transform: translate(-50%, -50%); }
+  details[open] summary .mark { transform: rotate(45deg); opacity: 0.9; }
+  details[open] summary { color: #fff; }
+  .answer {
+    padding: 0 34px 22px 2px;
+    font-size: 15.5px; line-height: 1.75;
+    color: rgba(255,255,255,0.66);
+    max-width: 62ch;
+  }
+  .answer p + p { margin-top: 10px; }
+  .answer a { color: rgba(212,183,118,0.9); text-decoration: none; }
+  .answer a:hover { text-decoration: underline; }
+
+  /* ================= Closing CTA + footer ================= */
+  .closing {
+    width: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    gap: clamp(18px, 3vh, 26px);
+    padding: 0 22px clamp(44px, 7vh, 72px);
+    text-align: center;
+  }
+  .closing .lede {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(18px, 2.4vw, 22px);
+    color: rgba(255,255,255,0.7);
+  }
+  .cta {
+    position: relative; display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 30px; border-radius: 999px;
+    font-family: var(--serif);
+    font-size: 17px; font-weight: 500; letter-spacing: 0.04em;
+    color: #fff; text-decoration: none; cursor: pointer;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -6px 14px rgba(255,255,255,0.05), 0 10px 34px rgba(0,0,0,0.45);
+    transition: transform .2s ease, background .25s ease;
+  }
+  .cta::before { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0) 46%); mix-blend-mode: screen; }
+  .cta:hover { background: rgba(255,255,255,0.16); transform: translateY(-1px); }
+  .cta:active { transform: scale(0.985); }
+  .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .cta svg { width: 17px; height: 20px; fill: #fff; margin-top: -3px; }
+
+  .legal { font-size: 12px; color: rgba(255,255,255,0.48); text-align: center; padding-bottom: 40px; }
+  .legal a { color: inherit; text-decoration: none; margin: 0 7px; }
+  .legal a:hover { color: rgba(255,255,255,0.75); }
+  .legal a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .top > *, main { animation: none; }
+    summary .mark { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top">
+    <a class="brand" href="index.html">Woah</a>
+    <h1>Questions, answered.</h1>
+    <p class="sub">How the score works, what you can do with Woah, what's free, and how your data is handled.</p>
+  </header>
+
+  <main>
+    <div class="section-eyebrow">The basics</div>
+
+    <details>
+      <summary>What is Woah?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Woah is an iOS app that turns the numbers from your wearable into one clear answer every morning: a recovery score from 0 to 100, and one honest message about what your body needs today. It reads your sleep, heart-rate variability, resting heart rate, breathing rate and activity from Apple Health, and does the interpretation for you.</p></div>
+    </details>
+
+    <details>
+      <summary>What problem does Woah solve?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Wearables are great at collecting data and bad at telling you what it means. You wake up to a dashboard of graphs and still don't know: should I train today or rest? Woah replaces the dashboard with a single score, a plain-language explanation of why, and concrete guidance for the day. No jargon, no guesswork.</p></div>
+    </details>
+
+    <details>
+      <summary>Who is Woah for?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Anyone who tracks their body and wants to act on the data: people who train, people fixing their sleep, people managing stress, and couples who want to understand each other's days. You need an iPhone (iOS 17 or later) and ideally a wearable that writes sleep to Apple Health.</p></div>
+    </details>
+
+    <details>
+      <summary>Which wearables work with Woah?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Any device that syncs to Apple Health: Apple Watch, Garmin, Oura, Whoop, Polar, Fitbit and others. Woah reads from Apple Health, so there are no separate accounts or logins. If a night looks wrong, you can correct sleep, steps or stress manually, and if you have no wearable you can enter values by hand.</p></div>
+    </details>
+
+    <div class="section-eyebrow">The recovery score</div>
+
+    <details>
+      <summary>How is the recovery score calculated?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The score weighs four overnight signals: sleep is the biggest part (about half), then heart-rate variability compared with your own baseline (about a third), and smaller contributions from resting heart rate and breathing rate. On top of that, life adjusts the result: high self-reported stress, a declining HRV trend, or alcohol and nicotine the evening before can cap how high the score can go, and recent hard training is factored in.</p><p>The result lands in one of three zones: Ready (75 and up), Caution (50–74), Recover (below 50).</p></div>
+    </details>
+
+    <details>
+      <summary>Why is my score compared to a baseline instead of a fixed target?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Because normal is personal. An HRV of 45 ms can be excellent for one person and low for another. Woah builds a rolling baseline from your own history and scores each morning against it, so the score tells you how you are doing relative to you.</p></div>
+    </details>
+
+    <details>
+      <summary>Why doesn't my score change during the day?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>By design. Woah locks the score when your night's data first arrives, so it is one stable answer for the day rather than a number that drifts as data trickles in. Tomorrow is a new score.</p></div>
+    </details>
+
+    <details>
+      <summary>What is "Today, answered"?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A block on the main screen that answers the day's practical questions directly from your data: Can I train today? How did I sleep? How much sleep am I behind? Should I drink tonight? Am I getting sick? The answers are computed from your numbers, never invented, and each one has a short AI comment behind the info icon that adds colour without ever contradicting the facts.</p></div>
+    </details>
+
+    <details>
+      <summary>What is the sleep debt number?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A running total of the sleep you have missed versus your personal sleep need over the last 14 nights, weighted so recent nights matter most. It answers "how far behind am I?" and comes with a 7-day trend so you can see whether you are catching up or sliding.</p></div>
+    </details>
+
+    <details>
+      <summary>What is the Lifestyle status?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Your long-term picture. While the recovery score is about last night, the Lifestyle status looks at your last 30 days across five pillars: sleep, recovery, activity, stress and habits. It is shown as a milestone, from Building to Steady, Balanced, Thriving and Flourishing, so you see the direction of a month, not the noise of a day.</p></div>
+    </details>
+
+    <div class="section-eyebrow">What you can do</div>
+
+    <details>
+      <summary>What does Woah do day to day?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Every morning you get your score, the why behind it, and AI guidance for the day. You can log daily habits (alcohol, nicotine, caffeine, food) and keep streaks, check the "Today, answered" block before decisions, get smart notifications (a morning plan, an afternoon check-in, a wind-down nudge at night), browse your history and trends, look back at any past day in the calendar, share a beautiful score card, and talk to your coach.</p></div>
+    </details>
+
+    <details>
+      <summary>What is the Woah Coach?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A conversation with Woah itself, in its own tab. The coach sees up to a year of your data, helps you set real goals, and builds you a concrete weekly plan every Sunday evening. It checks in mid-week, remembers what you tell it (an injury, a trip, a habit you're breaking), pulls up specific days on request and draws charts right in the chat. It is a wellness coach, not a doctor: it never diagnoses or gives medical advice.</p></div>
+    </details>
+
+    <details>
+      <summary>What are the partner features?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>You pair with your partner using a 6-character code, and each of you sees how the other slept and how ready their day is, without needing to ask, and without exposing anything you choose to keep private. The Us view adds insights about the two of you together. You control exactly what is shared, can pause sharing at any time, and can pair with more than one person (a partner, a friend, a training buddy).</p></div>
+    </details>
+
+    <div class="section-eyebrow">Pricing</div>
+
+    <details>
+      <summary>What does Woah cost?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, "Today, answered", habit logging and streaks, smart notifications and share cards. No time limit, no ads.</p></div>
+    </details>
+
+    <details>
+      <summary>What does Premium include?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Premium is one subscription that unlocks everything else: History and trends, the Lifestyle status, the AI coach with the weekly plan, the most capable AI model (Anthropic's Claude) for all daily content, and the full partner experience: pairing, the Us view and partner notifications.</p></div>
+    </details>
+
+    <details>
+      <summary>How much is Premium and is there a trial?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Premium is a monthly or annual subscription (the annual plan is the better deal). New subscribers start with a free trial, and the exact trial length and local price are always shown in the app before anything is charged. Billing goes through your Apple ID, and you can cancel anytime in Settings, under Subscriptions. If you cancel, the free core keeps working.</p></div>
+    </details>
+
+    <details>
+      <summary>Do both partners need Premium?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Pairing is a Premium feature, and each person manages their own subscription. The free core is always available to both.</p></div>
+    </details>
+
+    <div class="section-eyebrow">Privacy &amp; data</div>
+
+    <details>
+      <summary>Where does my health data live?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>On your iPhone and in your own iCloud. Woah has no servers of its own and never sells data. Your settings, habits and score history sync to your private iCloud so they survive a new phone, and raw Apple Health data is never uploaded anywhere by Woah.</p></div>
+    </details>
+
+    <details>
+      <summary>What does the AI see?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Only what it needs to write your content: your daily values and derived scores, never your name or identity. Coach conversations are stored only on your phone, they are never synced or uploaded beyond the AI call itself. If you use Apple's on-device AI mode, content is generated entirely on the phone.</p></div>
+    </details>
+
+    <details>
+      <summary>What does my partner see?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>A daily readiness snapshot: score, status and the signals you have chosen to share. You decide what is visible with the sharing mask, and you can pause sharing or unpair whenever you want. Your coach conversations are yours alone; a partner never sees them.</p></div>
+    </details>
+
+    <details>
+      <summary>Can I delete my data?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Yes. Delete the app and your local data goes with it; your iCloud copy can be removed from your iCloud settings, and unpairing removes your shared snapshot. The full details are in the <a href="privacy.html">privacy policy</a>.</p></div>
+    </details>
+
+    <div class="section-eyebrow">Practical</div>
+
+    <details>
+      <summary>What do I need for the score to work?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>At minimum, sleep data in Apple Health, which usually means wearing your device at night. HRV and resting heart rate make the score meaningfully better. If HRV is missing, Woah asks for a quick 1-to-5 stress rating instead. If nothing has synced yet in the morning, Woah shows a waiting state and guides you through nudging your wearable's app to sync.</p></div>
+    </details>
+
+    <details>
+      <summary>A day looks wrong. Can I fix it?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Yes. If the wearable misread a night, you can correct sleep, steps or stress for today or a past day, and Woah recalculates the score, the AI content and your Lifestyle status from the corrected values.</p></div>
+    </details>
+
+    <details>
+      <summary>Is Woah on Android?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>No. Woah is built on Apple Health and is iPhone-only.</p></div>
+    </details>
+
+    <details>
+      <summary>How do I get help?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Email <a href="mailto:petter@woah-recovery.app">petter@woah-recovery.app</a>. Every message is read and answered, typically within 1–2 business days.</p></div>
+    </details>
+  </main>
+
+  <div class="closing">
+    <p class="lede">Still curious? The app answers faster.</p>
+    <a class="cta" href="https://apps.apple.com/se/app/woah-recovery/id6776171727" aria-label="Woah on the App Store">
+      <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      App Store
+    </a>
+  </div>
+
+  <div class="legal">
+    <a href="index.html">Home</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+
+</body>
+</html>
