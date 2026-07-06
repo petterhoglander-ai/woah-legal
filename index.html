@@ -90,7 +90,7 @@
        so the wordmark is never clipped above the scroll origin */
     justify-content: safe center;
     gap: clamp(15px, 2.4vh, 24px);
-    padding: clamp(40px, 7vh, 88px) 22px clamp(64px, 11vh, 130px);
+    padding: clamp(40px, 7vh, 88px) 22px clamp(90px, 15vh, 180px);
     text-align: center;
   }
 
@@ -211,31 +211,32 @@
   .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
   .cta svg { width: 17px; height: 20px; fill: #fff; margin-top: -3px; }
 
-  /* ---- QR popover: desktop-only, revealed on hover/focus of the CTA ---- */
-  .cta-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; }
+  /* ---- QR popover: desktop-only, revealed on hover/focus of the CTA.
+     Centred below the button, big enough to scan from across the room. ---- */
+  .cta-group { position: relative; z-index: 5; display: inline-flex; flex-direction: column; align-items: center; }
   .qr-pop { display: none; }
   @media (hover: hover) and (pointer: fine) and (min-width: 681px) {
     .qr-pop {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      position: absolute; left: calc(100% + 18px); top: 50%;
-      padding: 14px 14px 12px;
-      border-radius: 22px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      position: absolute; top: calc(100% + 18px); left: 50%;
+      padding: 26px 26px 20px;
+      border-radius: 32px;
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
       border: 1px solid rgba(212,183,118,0.30);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 18px 54px rgba(0,0,0,0.55);
-      opacity: 0; transform: translate(-10px, -50%) scale(0.97);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 30px 90px rgba(0,0,0,0.75);
+      opacity: 0; transform: translate(-50%, -8px) scale(0.97);
       pointer-events: none;
       transition: opacity .38s var(--ease), transform .38s var(--ease);
     }
     .cta-group:hover .qr-pop,
     .cta-group:focus-within .qr-pop {
-      opacity: 1; transform: translate(0, -50%) scale(1);
+      opacity: 1; transform: translate(-50%, 0) scale(1);
       pointer-events: auto;
     }
-    .qr-pop svg { width: 128px; height: 128px; border-radius: 12px; display: block; }
+    .qr-pop svg { width: min(36vw, 340px); height: auto; aspect-ratio: 1; border-radius: 16px; display: block; }
     .qr-pop .qr-label {
-      font-size: 11px; font-weight: 500;
+      font-size: 12px; font-weight: 500;
       letter-spacing: 0.14em; text-indent: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.55); white-space: nowrap;
     }
@@ -252,7 +253,7 @@
   /* ================= Q&A section ================= */
   .faq-section {
     width: 100%; max-width: 720px;
-    padding: clamp(90px, 16vh, 190px) 22px clamp(40px, 7vh, 80px);
+    padding: clamp(130px, 22vh, 260px) 22px clamp(40px, 7vh, 80px);
     display: flex; flex-direction: column;
   }
   .faq-head { text-align: center; margin-bottom: clamp(28px, 5vh, 52px); }
