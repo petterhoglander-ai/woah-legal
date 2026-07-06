@@ -75,7 +75,10 @@
     unicode-range: U+0000-00FF, U+2013-2014, U+2018-201D;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
+  html { height: 100%; }
+  /* body must NOT have a fixed height: it's a flex column, and a fixed height
+     makes the sections flex-shrink into one viewport — the hero then overflows
+     on top of the Q&A section on tall mobile layouts. */
   :root {
     --gold: #D4B776;
     --bg: #000;
@@ -120,8 +123,10 @@
     box-shadow: 0 0 90px rgba(84,214,138,0.16), inset 0 0 90px rgba(84,214,138,0.08);
   }
 
-  /* Everything readable stacks above the orb */
-  .hero, .faq-section, .legal { position: relative; z-index: 1; }
+  /* Everything readable stacks above the orb — and never shrinks: the body is
+     a flex column, and default flex-shrink would compress sections into the
+     viewport instead of letting the page scroll. */
+  .hero, .faq-section, .legal { position: relative; z-index: 1; flex-shrink: 0; }
 
   /* ================= Hero ================= */
   .hero {
