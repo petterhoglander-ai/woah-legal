@@ -119,6 +119,62 @@
   },
   {
    "@type": "Question",
+   "name": "What is my body age?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your age in years, next to the age your data reads as. Woah takes what your sleep, training, resting heart rate, heart-rate variability, weight and habits say, adds it up in years, and moves your real age by that much. Sleep well and train consistently and your body reads younger than you are; smoke, drink heavily or sleep badly and it reads older. Under the number is a breakdown of exactly which of those moved it and by how much, and a 90-day line showing where it has been. It is free, and it lives on the Lifestyle tab under \"Your body, answered.\""
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does the body age deliberately ignore?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Anything you cannot change. Your family history, any diagnosis you have, and how much company you keep all affect the longevity estimate, but none of them touches the body age — they are real, and they are not statements about how old your body is today. A body age you have no way of moving would be the opposite of the point. What is left is what you do and what your body shows."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is body age a biological age test?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. There is no blood sample and no DNA — this is not an epigenetic clock, and Woah never claims to be one. It is transparent arithmetic on the signals your wearable already collects, and every screen it appears on says \"an estimate, not science.\" It also needs real data behind it: if Woah cannot see sleep, activity and at least one heart signal from enough nights, it shows no body age at all rather than guessing."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does my body age barely move from day to day?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because it is built on a 30-day average, and that window shifts a little every morning whether you changed anything or not. Woah caps how fast the number is allowed to move, so a genuinely better fortnight shows up as visible, earned progress while a rolling-window artefact shows up as almost nothing. Answer something about yourself in the improve flow and the number jumps the whole way immediately, because that is a real change and not an artefact."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the Longevity estimate?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "An estimated lifespan, shown as an age, with the days you have lived, the days that leaves, and how far into it you already are. Under it is a list of the changes that would move it most and what each one is worth in days. The number starts from national life-expectancy figures for your age and sex and is adjusted by what Woah knows about you. You can also reveal an estimated last day, which is off until you switch it on from the card itself."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is the longevity number a prediction?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No, and it is not medical advice. It is a transparent estimate built on population averages: it says what tends to happen to people whose habits and measurements look like yours, not what will happen to you. The point is not the number's accuracy — it is that it moves when you change something, by an amount you can see and understand. Nobody's date is fixed, and the card recomputes every time anything about you does."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why can the improve flow make my number go down?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because answering honestly buys precision, not years. An unanswered question is scored as the population average, so telling Woah that you smoke, or that heart disease runs in your family, can lower the estimate. That is the number getting more true, not worse. The precision dots on the card fill up as you answer."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "What does Woah do day to day?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -162,7 +218,7 @@
    "name": "What does Woah cost?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, \"Today, answered\", habit logging and streaks, smart notifications and share cards. No time limit, no ads."
+    "text": "The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, \"Today, answered\", habit logging and streaks, smart notifications, share cards, and both your body age and your longevity estimate with everything that moves them. No time limit, no ads."
    }
   },
   {
@@ -170,7 +226,7 @@
    "name": "What does Premium include?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Premium is one subscription that unlocks everything else: History and trends, the Lifestyle status, the AI coach with the weekly plan, the most capable AI model (Anthropic's Claude) for all daily content, and the full partner experience: pairing, the Us view and partner notifications."
+    "text": "Premium is one subscription that unlocks everything else: History and trends, the Lifestyle status, the AI coach with the weekly plan, the most capable AI model (Anthropic's Claude) for all daily content, the improve flow that sharpens your longevity estimate with what only you know, and the full partner experience: pairing, the Us view and partner notifications."
    }
   },
   {
@@ -211,6 +267,22 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "A daily readiness snapshot: score, status and the signals you have chosen to share. You decide what is visible with the sharing mask, and you can pause sharing or unpair whenever you want. Your coach conversations are yours alone; a partner never sees them."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can my partner see my body age and longevity number?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only the conclusions, and only if you leave that sharing on. Your partner sees the two ages and the estimated lifespan; they never see the breakdown behind them. That line is deliberate: a nicotine row would tell them you smoke, and the family-history and diagnosis factors would say more still. Turn the sharing off in Settings and the figures are removed from the shared record, not merely hidden."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who sees the answers I give in the improve flow?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nobody but you. Family history and diagnoses are the most sensitive things Woah ever asks for, so they stay on your phone and in your own iCloud. They are never sent to the AI, never included in coach conversations, and never part of what a partner receives."
    }
   },
   {
@@ -495,6 +567,35 @@
       <div class="answer"><p>Your long-term picture. While the recovery score is about last night, the Lifestyle status looks at your last 30 days across five pillars: sleep, recovery, activity, stress and habits. It is shown as a milestone, from Building to Steady, Balanced, Thriving and Flourishing, so you see the direction of a month, not the noise of a day.</p></div>
     </details>
 
+    <details>
+      <summary>What is my body age?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Your age in years, next to the age your data reads as. Woah takes what your sleep, training, resting heart rate, heart-rate variability, weight and habits say, adds it up in years, and moves your real age by that much. Sleep well and train consistently and your body reads younger than you are; smoke, drink heavily or sleep badly and it reads older. Under the number is a breakdown of exactly which of those moved it and by how much, and a 90-day line showing where it has been. It is free, and it lives on the Lifestyle tab under "Your body, answered."</p></div>
+    </details>
+    <details>
+      <summary>What does the body age deliberately ignore?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Anything you cannot change. Your family history, any diagnosis you have, and how much company you keep all affect the longevity estimate, but none of them touches the body age — they are real, and they are not statements about how old your body is today. A body age you have no way of moving would be the opposite of the point. What is left is what you do and what your body shows.</p></div>
+    </details>
+    <details>
+      <summary>Is body age a biological age test?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>No. There is no blood sample and no DNA — this is not an epigenetic clock, and Woah never claims to be one. It is transparent arithmetic on the signals your wearable already collects, and every screen it appears on says "an estimate, not science." It also needs real data behind it: if Woah cannot see sleep, activity and at least one heart signal from enough nights, it shows no body age at all rather than guessing.</p></div>
+    </details>
+    <details>
+      <summary>Why does my body age barely move from day to day?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Because it is built on a 30-day average, and that window shifts a little every morning whether you changed anything or not. Woah caps how fast the number is allowed to move, so a genuinely better fortnight shows up as visible, earned progress while a rolling-window artefact shows up as almost nothing. Answer something about yourself in the improve flow and the number jumps the whole way immediately, because that is a real change and not an artefact.</p></div>
+    </details>
+    <details>
+      <summary>What is the Longevity estimate?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>An estimated lifespan, shown as an age, with the days you have lived, the days that leaves, and how far into it you already are. Under it is a list of the changes that would move it most and what each one is worth in days. The number starts from national life-expectancy figures for your age and sex and is adjusted by what Woah knows about you. You can also reveal an estimated last day, which is off until you switch it on from the card itself.</p></div>
+    </details>
+    <details>
+      <summary>Is the longevity number a prediction?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>No, and it is not medical advice. It is a transparent estimate built on population averages: it says what tends to happen to people whose habits and measurements look like yours, not what will happen to you. The point is not the number's accuracy — it is that it moves when you change something, by an amount you can see and understand. Nobody's date is fixed, and the card recomputes every time anything about you does.</p></div>
+    </details>
+    <details>
+      <summary>Why can the improve flow make my number go down?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Because answering honestly buys precision, not years. An unanswered question is scored as the population average, so telling Woah that you smoke, or that heart disease runs in your family, can lower the estimate. That is the number getting more true, not worse. The precision dots on the card fill up as you answer.</p></div>
+    </details>
+
     <div class="section-eyebrow">What you can do</div>
 
     <details>
@@ -526,12 +627,12 @@
 
     <details>
       <summary>What does Woah cost?<span class="mark" aria-hidden="true"></span></summary>
-      <div class="answer"><p>The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, "Today, answered", habit logging and streaks, smart notifications and share cards. No time limit, no ads.</p></div>
+      <div class="answer"><p>The core of Woah is free, forever: the daily recovery score, the why behind it, daily AI guidance, "Today, answered", habit logging and streaks, smart notifications, share cards, and both your body age and your longevity estimate with everything that moves them. No time limit, no ads.</p></div>
     </details>
 
     <details>
       <summary>What does Premium include?<span class="mark" aria-hidden="true"></span></summary>
-      <div class="answer"><p>Premium is one subscription that unlocks everything else: History and trends, the Lifestyle status, the AI coach with the weekly plan, the most capable AI model (Anthropic's Claude) for all daily content, and the full partner experience: pairing, the Us view and partner notifications.</p></div>
+      <div class="answer"><p>Premium is one subscription that unlocks everything else: History and trends, the Lifestyle status, the AI coach with the weekly plan, the most capable AI model (Anthropic's Claude) for all daily content, the improve flow that sharpens your longevity estimate with what only you know, and the full partner experience: pairing, the Us view and partner notifications.</p></div>
     </details>
 
     <details>
@@ -559,6 +660,15 @@
     <details>
       <summary>What does my partner see?<span class="mark" aria-hidden="true"></span></summary>
       <div class="answer"><p>A daily readiness snapshot: score, status and the signals you have chosen to share. You decide what is visible with the sharing mask, and you can pause sharing or unpair whenever you want. Your coach conversations are yours alone; a partner never sees them.</p></div>
+    </details>
+
+    <details>
+      <summary>Can my partner see my body age and longevity number?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Only the conclusions, and only if you leave that sharing on. Your partner sees the two ages and the estimated lifespan; they never see the breakdown behind them. That line is deliberate: a nicotine row would tell them you smoke, and the family-history and diagnosis factors would say more still. Turn the sharing off in Settings and the figures are removed from the shared record, not merely hidden.</p></div>
+    </details>
+    <details>
+      <summary>Who sees the answers I give in the improve flow?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Nobody but you. Family history and diagnoses are the most sensitive things Woah ever asks for, so they stay on your phone and in your own iCloud. They are never sent to the AI, never included in coach conversations, and never part of what a partner receives.</p></div>
     </details>
 
     <details>
