@@ -51,28 +51,36 @@
 <header>
   <p class="label">Woah Recovery App</p>
   <h1>Privacy Policy</h1>
-  <p>Last updated: August 2, 2026</p>
+  <p>Last updated: August 8, 2026</p>
 </header>
 
 <p>This policy describes how Woah ("the app") handles your data. The app is developed by Petter Höglander, an individual developer based in Sweden.</p>
 
 <h2>1. Data we access</h2>
-<p>Woah reads the following health signals from Apple Health — read-only, never written back:</p>
+<p>Woah reads the following from Apple Health — read-only, never written back:</p>
 <ul>
   <li>Sleep duration and sleep stages (REM, deep, light, awake)</li>
   <li>Heart rate variability (HRV)</li>
   <li>Resting heart rate</li>
-  <li>Steps and active energy</li>
+  <li>Steps, active energy, and workouts</li>
   <li>Breathing rate (respiratory rate)</li>
+  <li>Cardio fitness (VO₂max), where your watch records it</li>
+  <li>Body mass and height, used only for the Longevity estimate</li>
+  <li>Date of birth and biological sex, used to choose the right baselines for your score</li>
 </ul>
-<p>This data is processed entirely on your device to compute your daily recovery score and Woah Score. It is never sold, used for advertising, or shared with any analytics providers.</p>
+<p>This data is processed entirely on your device to compute your daily recovery score, Lifestyle score, Fitness age and Longevity estimate. It is never sold, used for advertising, or shared with any analytics providers.</p>
+<p>Some things are not in Apple Health, so Woah asks you instead: your daily habit logs (alcohol, nicotine, caffeine, food, and how you felt), manual stress ratings, and your answers to the Longevity intake. You choose whether to give them, they are stored as described in section 4, and they are never included in analytics.</p>
 
 <h2>2. AI-generated content</h2>
 <p>Woah generates personalized daily messages and insights using Anthropic's Claude AI. To do this, anonymous health summaries are transmitted to Anthropic's servers — for example: "Recovery score 72, sleep 7.5h, mild stress signal." Your name and identifiable biometrics are not included in these requests.</p>
 <p>Anthropic processes these summaries to generate text and does not retain them for training. See <a href="https://www.anthropic.com/privacy">Anthropic's Privacy Policy</a> for their data practices.</p>
+<p><strong>Woah Coach.</strong> When you write to the coach, your message and a summary of your recent health data are sent to Anthropic so it can answer. Conversations stay on your device — they are never synced, backed up, or shared with a partner. Once a day Woah may distil a short block of plain facts from a conversation, such as a goal you set or that you train on Tuesdays, so the coach still knows them tomorrow. That block is stored in your own private iCloud; the conversation itself is not.</p>
 
 <h2>3. Partner sharing</h2>
-<p>If you pair with a partner, a snapshot of the health metrics you explicitly choose to share (via your sharing settings) is stored in Apple's CloudKit. Only your paired partner can access this data. You can revoke access or disconnect at any time from the app.</p>
+<p>Pairing with a partner is free, and always your choice. When you pair, Woah publishes a snapshot of the metrics you have chosen to share — via your sharing settings — to Apple's CloudKit, as a separate record for each person you share with. Revoking someone deletes their copy.</p>
+<p>Woah keeps the record of who may read your data on the server, not only in your phone's own list. That way a reinstalled or restored device cannot go on sharing with someone the app can no longer name for you. You can see every reader, and revoke any of them, under <em>Partner &rarr; Who can see your data</em>.</p>
+<p>Connections made before Woah recorded them this way are also served by a single shared snapshot, kept for backwards compatibility, which can be read by anyone already paired with you. The same screen offers <em>Stop sharing with unknown readers</em>, which removes that shared snapshot so revocation becomes absolute.</p>
+<p>Your Longevity and Fitness age are shared with a paired partner as the resulting number only. The intake answers behind them never leave your own storage.</p>
 
 <h2>4. Data stored on your device</h2>
 <p>The app stores the following locally using Apple's UserDefaults (encrypted by iOS data protection):</p>
@@ -81,7 +89,12 @@
   <li>App settings and notification preferences</li>
   <li>Daily recovery score history and AI-generated content (cache)</li>
   <li>Manual stress ratings you enter</li>
+  <li>Your daily habit logs — alcohol, nicotine, caffeine, food, and the wellbeing entries you choose to add</li>
+  <li>Your Longevity intake answers</li>
+  <li>Your coach conversations, which stay on the device</li>
 </ul>
+<p>So that your history survives a new phone, Woah mirrors the entries you have made yourself — habits, stress ratings, locked daily scores, profile, goals, and the coach's distilled memory — to your personal iCloud (the CloudKit private database). Only you can read it: it is not sent to us, and not shared with a partner. Raw Apple Health data is never mirrored.</p>
+<p>Your current score and today's answers are also written to a storage area shared with the Woah widgets and the Apple Watch app, so they can show a number without recomputing anything.</p>
 
 <h2>5. Product analytics &amp; purchase attribution</h2>
 <p>Woah uses <a href="https://posthog.com">PostHog</a> for product analytics, hosted on servers in the European Union. We collect anonymous usage events — for example which screens are viewed and which features are used — to understand how the app is used and improve it.</p>
