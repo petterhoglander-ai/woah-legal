@@ -72,7 +72,9 @@
 <p>Some things are not in Apple Health, so Woah asks you instead: your daily habit logs (alcohol, nicotine, caffeine, food, and how you felt), manual stress ratings, and your answers to the Longevity intake. You choose whether to give them, they are stored as described in section 4, and they are never included in analytics.</p>
 
 <h2>2. AI-generated content</h2>
-<p>Woah generates personalized daily messages and insights using Anthropic's Claude AI. To do this, anonymous health summaries are transmitted to Anthropic's servers — for example: "Recovery score 72, sleep 7.5h, mild stress signal." Your name and identifiable biometrics are not included in these requests.</p>
+<p>Woah generates personalized daily messages and insights using Anthropic's Claude AI. To do this, health summaries are transmitted to Anthropic's servers — for example: "Recovery score 72, sleep 7.5h, mild stress signal."</p>
+<p><strong>What is included:</strong> your first name, in the notifications Woah writes for you, so a message can address you by name. If you are paired with someone, their first name is included the same way in the notifications about them. Your age, sex and a band word derived from your weight and height are included; the measurements themselves are not. Because the requests carry the number of days you have lived, your date of birth can be derived from them.</p>
+<p><strong>What is never included:</strong> your surname, email or any account identifier — Woah has no logins, so no such identifier exists. Your answers about family history, diagnoses and social connection are never sent to the AI. Requests are made directly from your device, which means Anthropic sees your IP address but receives no identifier linking one day's request to another.</p>
 <p>Anthropic processes these summaries to generate text and does not retain them for training. See <a href="https://www.anthropic.com/privacy">Anthropic's Privacy Policy</a> for their data practices.</p>
 <p><strong>Woah Coach.</strong> When you write to the coach, your message and a summary of your recent health data are sent to Anthropic so it can answer. Conversations stay on your device — they are never synced, backed up, or shared with a partner. Once a day Woah may distil a short block of plain facts from a conversation, such as a goal you set or that you train on Tuesdays, so the coach still knows them tomorrow. That block is stored in your own private iCloud; the conversation itself is not.</p>
 
@@ -134,7 +136,8 @@
   <li>We do not sell your data to any third party</li>
   <li>We do not use your health data for advertising</li>
   <li>We do not share your health data with analytics platforms</li>
-  <li>We do not transmit your name or body measurements to any server</li>
+  <li>We do not transmit your body measurements to any server — only a band word derived from them</li>
+    <li>Your first name is included in the AI requests that write your notifications, and in nothing else</li>
   <li>HealthKit data is never used for advertising or tracking</li>
 </ul>
 
