@@ -146,7 +146,15 @@
    "name": "Can I log a nap?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Yes. Apple Watch does not detect naps on its own, so Woah lets you log them, and gives you something for the habit. The nap card sits inside the Tank, behind the battery in the top left corner of the main screen, directly under the reading it answers. Pick a length, 10, 20, 30, 45 or 90 minutes (20 lifts you without grogginess, 90 is a full sleep cycle), and Woah counts down and sends a notification when time is up. When you get up you confirm how long you actually slept before anything is saved, or skip and nothing is written. A saved nap is written to Apple Health as sleep, so other apps can see it too, and your Tank picks it up and draws the recharge in its curve. Naps never change your recovery score or your night's sleep figures, and logging them is free. One honest caveat: the notification stays silent in silent mode, so it tells you time is up rather than promising to wake you."
+    "text": "Yes. Apple Watch does not detect naps on its own, so Woah lets you log them, and gives you something for the habit. The nap card sits inside the Tank, behind the battery in the top left corner of the main screen, directly under the reading it answers. Pick a length, 10, 20, 30, 45 or 90 minutes (20 lifts you without grogginess, 90 is a full sleep cycle), and Woah wakes you with a real alarm when time is up. While the nap runs, the countdown sits on your Lock Screen and in the Dynamic Island, and on the Smart Stack of a paired Apple Watch. When you get up you confirm how long you actually slept before anything is saved, or skip and nothing is written. A saved nap is kept in Woah, so your Tank picks it up and draws the recharge in its curve even if you never gave Woah permission to write to Apple Health, and it is written to Apple Health as sleep as well so other apps can see it. Naps never change your recovery score or your night's sleep figures, and logging them is free."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will the nap alarm actually wake me?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, and it works through silent mode. While the nap runs Woah plays a very quiet sound, and at the end that gives way to a real alarm at full volume with your phone buzzing alongside it, for up to five minutes or until you tap to stop. The quiet sound is not decoration, it is what keeps the alarm alive with your screen off, so leave Woah running in the background rather than swiping it away. You can turn the alarm off with the switch on the nap screen, and then you only get a notification, which does stay silent in silent mode. If you have the Apple Watch app, starting the nap there instead buzzes your wrist as well, which is the surest way to be woken without waking anyone else. That has to be started on the watch: iPhone cannot set a wrist alarm for it."
    }
   },
   {
@@ -259,6 +267,14 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "Daily Habits covers four groups, and every question is optional: how you feel (mood, and whether you are healthy or coming down with something, with symptoms), what you put in (hydration, food, caffeine, alcohol, nicotine, with counts if you want them), what gave back (sauna, cold plunge, open water, time outdoors, stretching or yoga, meditation, time with people, and whether you had screens in the last hour before bed), and anything else as free text with your own tags. Rating a day's food as Good or Poor also offers a few detail tags for what it was made of, from vegetables and fish to fast food and soda; they colour what the coach says, never the score. Woah never counts calories and never asks for a photo of your plate: one level and a couple of taps, under thirty seconds, because a log you keep beats a log you abandon. You can log a missed evening up to seven days back, hide questions you don't care about, and tick the everyday ones straight from the home-screen widget. Alcohol and nicotine the evening before affect your recovery score, and the section that asks for the log keeps your logging streak in view; the rest is there so you and your coach can see what actually moves your body."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "When does Woah send notifications, and can it tell what I have already done?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Woah sends a morning briefing when last night's data lands, a plan for the day mid-morning, a check-in in the afternoon, a wind-down nudge at your own bedtime, and an optional habits reminder in the evening. Each one can be switched off on its own in Settings. They read the day before they speak. If you have already trained, or already passed your step target, the app says so and asks for nothing more, and on a low-recovery day it never asks for anything at all. When there is nothing honest left to say, the notification is not sent rather than sent vague. Woah sees a session as soon as your watch writes it to Apple Health, which is immediate for an Apple Watch and for apps that log directly; Garmin, Oura and WHOOP only reach Apple Health when you open their own app, so a session can arrive later for them. Notifications are written in the language you read the app in."
    }
   },
   {
@@ -744,7 +760,12 @@
 
     <details>
       <summary>Can I log a nap?<span class="mark" aria-hidden="true"></span></summary>
-      <div class="answer"><p>Yes. Apple Watch does not detect naps on its own, so Woah lets you log them, and gives you something for the habit. The nap card sits inside the Tank, behind the battery in the top left corner of the main screen, directly under the reading it answers. Pick a length, 10, 20, 30, 45 or 90 minutes (20 lifts you without grogginess, 90 is a full sleep cycle), and Woah counts down and sends a notification when time is up. When you get up you confirm how long you actually slept before anything is saved, or skip and nothing is written. A saved nap is written to Apple Health as sleep, so other apps can see it too, and your Tank picks it up and draws the recharge in its curve. Naps never change your recovery score or your night's sleep figures, and logging them is free. One honest caveat: the notification stays silent in silent mode, so it tells you time is up rather than promising to wake you.</p></div>
+      <div class="answer"><p>Yes. Apple Watch does not detect naps on its own, so Woah lets you log them, and gives you something for the habit. The nap card sits inside the Tank, behind the battery in the top left corner of the main screen, directly under the reading it answers. Pick a length, 10, 20, 30, 45 or 90 minutes (20 lifts you without grogginess, 90 is a full sleep cycle), and Woah wakes you with a real alarm when time is up. While the nap runs, the countdown sits on your Lock Screen and in the Dynamic Island, and on the Smart Stack of a paired Apple Watch. When you get up you confirm how long you actually slept before anything is saved, or skip and nothing is written. A saved nap is kept in Woah, so your Tank picks it up and draws the recharge in its curve even if you never gave Woah permission to write to Apple Health, and it is written to Apple Health as sleep as well so other apps can see it. Naps never change your recovery score or your night's sleep figures, and logging them is free.</p></div>
+    </details>
+
+    <details>
+      <summary>Will the nap alarm actually wake me?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Yes, and it works through silent mode. While the nap runs Woah plays a very quiet sound, and at the end that gives way to a real alarm at full volume with your phone buzzing alongside it, for up to five minutes or until you tap to stop. The quiet sound is not decoration, it is what keeps the alarm alive with your screen off, so leave Woah running in the background rather than swiping it away. You can turn the alarm off with the switch on the nap screen, and then you only get a notification, which does stay silent in silent mode. If you have the Apple Watch app, starting the nap there instead buzzes your wrist as well, which is the surest way to be woken without waking anyone else. That has to be started on the watch: iPhone cannot set a wrist alarm for it.</p></div>
     </details>
 
     <details>
@@ -811,6 +832,11 @@
     <details>
       <summary>What can I log about my day?<span class="mark" aria-hidden="true"></span></summary>
       <div class="answer"><p>Daily Habits covers four groups, and every question is optional: how you feel (mood, and whether you are healthy or coming down with something, with symptoms), what you put in (hydration, food, caffeine, alcohol, nicotine, with counts if you want them), what gave back (sauna, cold plunge, open water, time outdoors, stretching or yoga, meditation, time with people, and whether you had screens in the last hour before bed), and anything else as free text with your own tags. Rating a day's food as Good or Poor also offers a few detail tags for what it was made of, from vegetables and fish to fast food and soda; they colour what the coach says, never the score. Woah never counts calories and never asks for a photo of your plate: one level and a couple of taps, under thirty seconds, because a log you keep beats a log you abandon. You can log a missed evening up to seven days back, hide questions you don't care about, and tick the everyday ones straight from the home-screen widget. Alcohol and nicotine the evening before affect your recovery score, and the section that asks for the log keeps your logging streak in view; the rest is there so you and your coach can see what actually moves your body.</p></div>
+    </details>
+
+    <details>
+      <summary>When does Woah send notifications, and can it tell what I have already done?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Woah sends a morning briefing when last night's data lands, a plan for the day mid-morning, a check-in in the afternoon, a wind-down nudge at your own bedtime, and an optional habits reminder in the evening. Each one can be switched off on its own in Settings.</p><p>They read the day before they speak. If you have already trained, or already passed your step target, the app says so and asks for nothing more, and on a low-recovery day it never asks for anything at all. When there is nothing honest left to say, the notification is not sent rather than sent vague. Woah sees a session as soon as your watch writes it to Apple Health, which is immediate for an Apple Watch and for apps that log directly; Garmin, Oura and WHOOP only reach Apple Health when you open their own app, so a session can arrive later for them.</p><p>Notifications are written in the language you read the app in.</p></div>
     </details>
 
     <details>
