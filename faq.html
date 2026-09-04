@@ -351,6 +351,46 @@
   },
   {
    "@type": "Question",
+   "name": "What is \"Training, answered\"?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The block on the Me screen under \"Heart, answered\": the week's workouts as rows, each with what it cost. Every session your watch wrote to Apple Health shows its kind, when, how long, distance where there is one, average heart rate and calories, and a small chip on the right with the next morning's recovery score against your 30-day average: a green plus means the morning held up, a yellow or red minus means it sat lower than usual. Tap a row for the full session, or \"All your workouts\" for the year, week by week. The rows, the sheet and the year are free for everyone; the questions under each row go to the coach and come with the subscription."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does \"what it cost\" mean?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The morning after, read off the score you already saw. Woah locks a recovery score every morning, so a session's cost is simply the next morning's score against the average of the thirty mornings before it. Nothing is modelled or estimated: \"Next morning 61, −9\" means you woke to 61 where you usually wake to about 70. A session this afternoon has no cost until tomorrow, and a brand-new user has the morning but no average yet. Woah never turns this into a training-load or strain score, on purpose: the coach talks about load in words, the screen shows the mornings."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does the session sheet show?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Everything the phone knows about one workout. The numbers (duration, distance, pace or speed, average and max heart rate, calories, elevation), a map of the route for outdoor sessions that wrote one, time in five heart-rate zones, drift (the heart rate in the second half against the first), what it cost, and the night before. The zones are drawn against your max heart rate: the highest your watch has seen in the last ninety days of sessions, or, if that is lower, an estimate from your age, and the sheet says which. If your tracker wrote no heart rate for a session there are no zones to draw, and the sheet says so rather than showing empty bars."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does my session have no heart rate or zones?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because the source wrote the summary and not the samples. Apple Watch records heart rate through the whole session, so zones and drift are there. Garmin Connect and most third-party apps write the workout with its calories and distance but often without the heart-rate statistics attached, and sometimes without the samples at all. Woah reads what is there and never fills the gap with a guess: a row without a pulse says \"No heart rate\", and the sheet explains which source wrote it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I ask the coach about a workout?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, and that is the point of the block. Under each session there are up to three questions: why it felt hard, whether it was an easy day, and what it cost you. Tap one and the session travels into the coach with its facts, so the answer is about that run and that morning, not about training in general. The coach also has a lookup of its own: ask about any session or stretch of sessions in the last year and it pulls them up, with heart rate, zones and the morning after. Where you ran never travels: the coach gets distance and pace, the map stays on your phone. The questions are coach replies, so they come with the subscription; the rows and the sheet do not."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "What does Woah cost?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -418,7 +458,7 @@
    "name": "What does the AI see?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Your daily values and derived scores — and, in your notifications, your first name, so a nudge can address you rather than talk at \"you\". If you are paired, the numbers they chose to share travel too, including their longevity estimate when they share it, because the text you read about them is written from them; their first name travels the same way in the notifications about them. No surname, no email, no account: Woah has no logins, and the AI never receives an identifier that could be traced back to you. Your weight and height are never sent — only a band word derived from them. Your family history, diagnoses and how connected you feel are never sent at all; they stay on your phone and in your own iCloud. Coach conversations are stored only on your phone and are never synced, beyond the AI call itself. The short memory block the coach keeps about you is the exception: it is sent with every coach message, because it is what the coach knows, and it is backed up to your own private iCloud so a new phone does not start from nothing. You can read and edit that block, or empty it, from the Coach tab's gear. If you switch to Apple's on-device AI mode, everything is generated on the phone and nothing leaves it."
+    "text": "Your daily values and derived scores — and, in your notifications, your first name, so a nudge can address you rather than talk at \"you\". If you are paired, the numbers they chose to share travel too, including their longevity estimate when they share it, because the text you read about them is written from them; their first name travels the same way in the notifications about them. No surname, no email, no account: Woah has no logins, and the AI never receives an identifier that could be traced back to you. Your weight and height are never sent — only a band word derived from them. Your family history, diagnoses and how connected you feel are never sent at all; they stay on your phone and in your own iCloud. Coach conversations are stored only on your phone and are never synced, beyond the AI call itself. The short memory block the coach keeps about you is the exception: it is sent with every coach message, because it is what the coach knows, and it is backed up to your own private iCloud so a new phone does not start from nothing. You can read and edit that block, or empty it, from the Coach tab's gear. When you ask the coach about a workout, a one-line summary of that session travels too: its kind, length, distance, average and max heart rate and minutes in each zone, and what the next morning read. Never the route: where you went stays on your phone. If you switch to Apple's on-device AI mode, everything is generated on the phone and nothing leaves it."
    }
   },
   {
@@ -907,6 +947,26 @@
       <summary>What are the partner features?<span class="mark" aria-hidden="true"></span></summary>
       <div class="answer"><p>You pair with your partner using a 6-character code, and each of you sees how the other slept and how ready their day is, without needing to ask, and without exposing anything you choose to keep private. The Us view adds insights about the two of you together. You control exactly what is shared, can pause sharing at any time, and can pair with more than one person (a partner, a friend, a training buddy).</p></div>
     </details>
+    <details>
+      <summary>What is "Training, answered"?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The block on the Me screen under "Heart, answered": the week's workouts as rows, each with what it cost. Every session your watch wrote to Apple Health shows its kind, when, how long, distance where there is one, average heart rate and calories, and a small chip on the right with the next morning's recovery score against your 30-day average: a green plus means the morning held up, a yellow or red minus means it sat lower than usual. Tap a row for the full session, or "All your workouts" for the year, week by week. The rows, the sheet and the year are free for everyone; the questions under each row go to the coach and come with the subscription.</p></div>
+    </details>
+    <details>
+      <summary>What does "what it cost" mean?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>The morning after, read off the score you already saw. Woah locks a recovery score every morning, so a session's cost is simply the next morning's score against the average of the thirty mornings before it. Nothing is modelled or estimated: "Next morning 61, −9" means you woke to 61 where you usually wake to about 70. A session this afternoon has no cost until tomorrow, and a brand-new user has the morning but no average yet. Woah never turns this into a training-load or strain score, on purpose: the coach talks about load in words, the screen shows the mornings.</p></div>
+    </details>
+    <details>
+      <summary>What does the session sheet show?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Everything the phone knows about one workout. The numbers (duration, distance, pace or speed, average and max heart rate, calories, elevation), a map of the route for outdoor sessions that wrote one, time in five heart-rate zones, drift (the heart rate in the second half against the first), what it cost, and the night before. The zones are drawn against your max heart rate: the highest your watch has seen in the last ninety days of sessions, or, if that is lower, an estimate from your age, and the sheet says which. If your tracker wrote no heart rate for a session there are no zones to draw, and the sheet says so rather than showing empty bars.</p></div>
+    </details>
+    <details>
+      <summary>Why does my session have no heart rate or zones?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Because the source wrote the summary and not the samples. Apple Watch records heart rate through the whole session, so zones and drift are there. Garmin Connect and most third-party apps write the workout with its calories and distance but often without the heart-rate statistics attached, and sometimes without the samples at all. Woah reads what is there and never fills the gap with a guess: a row without a pulse says "No heart rate", and the sheet explains which source wrote it.</p></div>
+    </details>
+    <details>
+      <summary>Can I ask the coach about a workout?<span class="mark" aria-hidden="true"></span></summary>
+      <div class="answer"><p>Yes, and that is the point of the block. Under each session there are up to three questions: why it felt hard, whether it was an easy day, and what it cost you. Tap one and the session travels into the coach with its facts, so the answer is about that run and that morning, not about training in general. The coach also has a lookup of its own: ask about any session or stretch of sessions in the last year and it pulls them up, with heart rate, zones and the morning after. Where you ran never travels: the coach gets distance and pace, the map stays on your phone. The questions are coach replies, so they come with the subscription; the rows and the sheet do not.</p></div>
+    </details>
 
     <div class="section-eyebrow">Pricing</div>
 
@@ -954,7 +1014,7 @@
 
     <details>
       <summary>What does the AI see?<span class="mark" aria-hidden="true"></span></summary>
-      <div class="answer"><p>Your daily values and derived scores — and, in your notifications, your first name, so a nudge can address you rather than talk at "you". If you are paired, the numbers they chose to share travel too, including their longevity estimate when they share it, because the text you read about them is written from them; their first name travels the same way in the notifications about them. No surname, no email, no account: Woah has no logins, and the AI never receives an identifier that could be traced back to you. Your weight and height are never sent — only a band word derived from them. Your family history, diagnoses and how connected you feel are never sent at all; they stay on your phone and in your own iCloud. Coach conversations are stored only on your phone and are never synced, beyond the AI call itself. The short memory block the coach keeps about you is the exception: it is sent with every coach message, because it is what the coach knows, and it is backed up to your own private iCloud so a new phone does not start from nothing. You can read and edit that block, or empty it, from the Coach tab's gear. If you switch to Apple's on-device AI mode, everything is generated on the phone and nothing leaves it.</p></div>
+      <div class="answer"><p>Your daily values and derived scores — and, in your notifications, your first name, so a nudge can address you rather than talk at "you". If you are paired, the numbers they chose to share travel too, including their longevity estimate when they share it, because the text you read about them is written from them; their first name travels the same way in the notifications about them. No surname, no email, no account: Woah has no logins, and the AI never receives an identifier that could be traced back to you. Your weight and height are never sent — only a band word derived from them. Your family history, diagnoses and how connected you feel are never sent at all; they stay on your phone and in your own iCloud. Coach conversations are stored only on your phone and are never synced, beyond the AI call itself. The short memory block the coach keeps about you is the exception: it is sent with every coach message, because it is what the coach knows, and it is backed up to your own private iCloud so a new phone does not start from nothing. You can read and edit that block, or empty it, from the Coach tab's gear. When you ask the coach about a workout, a one-line summary of that session travels too: its kind, length, distance, average and max heart rate and minutes in each zone, and what the next morning read. Never the route: where you went stays on your phone. If you switch to Apple's on-device AI mode, everything is generated on the phone and nothing leaves it.</p></div>
     </details>
 
     <details>
