@@ -126,7 +126,7 @@
   /* Everything readable stacks above the orb — and never shrinks: the body is
      a flex column, and default flex-shrink would compress sections into the
      viewport instead of letting the page scroll. */
-  .hero, .faq-section, .legal { position: relative; z-index: 1; flex-shrink: 0; }
+  .hero, .pillars, .faq-section, .legal { position: relative; z-index: 1; flex-shrink: 0; }
 
   /* ================= Hero ================= */
   .hero {
@@ -297,6 +297,43 @@
   @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
   .scroll-cue svg { animation: drift 2.6s ease-in-out 2.2s infinite; }
 
+  /* ================= What Woah does ================= */
+  .pillars {
+    width: 100%; max-width: 880px;
+    padding: clamp(56px, 9vh, 112px) 22px 0;
+  }
+  .pillars-head { text-align: center; margin-bottom: clamp(24px, 4.4vh, 44px); }
+  .pillars-head h2 {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: clamp(28px, 4.6vw, 42px);
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin-top: 14px;
+  }
+  .pillar-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 1.8vw, 18px);
+  }
+  @media (max-width: 640px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar {
+    display: flex; flex-direction: column; gap: 10px;
+    padding: clamp(20px, 3vw, 28px);
+    border-radius: 22px;
+    background: rgba(8,8,8,0.70);
+    backdrop-filter: blur(14px) saturate(150%); -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(212,183,118,0.26);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  }
+  .pillar .mark-star {
+    width: 22px; height: 22px; display: block;
+    color: var(--gold);
+  }
+  .pillar h3 {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(20px, 2.4vw, 24px); line-height: 1.2;
+    letter-spacing: -0.01em; color: #fff;
+  }
+  .pillar p { font-size: 15px; line-height: 1.62; color: rgba(255,255,255,0.68); }
+
   /* ================= Q&A section ================= */
   .faq-section {
     width: 100%; max-width: 720px;
@@ -415,7 +452,7 @@
         <figure class="shot"><img src="screens/screen-1.jpg" alt="Seven questions your body answers every morning — the Today, answered matrix" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-2.jpg" alt="One score that tells you how hard to go today — the daily recovery orb" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-3.jpg" alt="Your answers, on your wrist — recovery and today's answers on Apple Watch" decoding="async" /></figure>
-        <figure class="shot"><img src="screens/screen-4.jpg" alt="Know if you should train today — plain-language answers, not raw data" loading="lazy" decoding="async" /></figure>
+        <figure class="shot"><img src="screens/screen-4.jpg" alt="Your watch tracks your training, Woah explains. A run, the question why it felt hard, and the answer in plain words" loading="lazy" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-5.jpg" alt="Coaching, not guilt — calm, personal daily notifications" loading="lazy" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-6.jpg" alt="Two people, two mornings — both partners' recovery, side by side" loading="lazy" decoding="async" /></figure>
         <figure class="shot"><img src="screens/screen-7.jpg" alt="Set a goal, get a plan, ask your body anything — the Woah Coach reading your recovery trend" loading="lazy" decoding="async" /></figure>
@@ -431,6 +468,35 @@
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 10l6 6 6-6"/></svg>
     </div>
   </header>
+
+  <section class="pillars" aria-label="What Woah does">
+    <div class="pillars-head">
+      <div class="section-eyebrow">What Woah does</div>
+      <h2>One app. Four jobs.</h2>
+    </div>
+    <div class="pillar-grid">
+      <article class="pillar">
+        <svg class="mark-star" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10.5"/><path fill="currentColor" stroke="none" d="M12 6.4l1.7 3.6 3.9.5-2.8 2.7.7 3.9L12 15.2l-3.5 1.9.7-3.9-2.8-2.7 3.9-.5z"/></svg>
+        <h3>Clear answers every morning</h3>
+        <p>Should I train today? How well did I sleep? Am I getting sick? Seven questions, answered before you get out of bed. No charts to read first.</p>
+      </article>
+      <article class="pillar">
+        <svg class="mark-star" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10.5"/><path fill="currentColor" stroke="none" d="M12 6.4l1.7 3.6 3.9.5-2.8 2.7.7 3.9L12 15.2l-3.5 1.9.7-3.9-2.8-2.7 3.9-.5z"/></svg>
+        <h3>Analyze your training</h3>
+        <p>Every session, and what it cost you the next morning. Ask why a run felt hard, or line it up against your last one. The answer comes in plain words, never a load score.</p>
+      </article>
+      <article class="pillar">
+        <svg class="mark-star" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10.5"/><path fill="currentColor" stroke="none" d="M12 6.4l1.7 3.6 3.9.5-2.8 2.7.7 3.9L12 15.2l-3.5 1.9.7-3.9-2.8-2.7 3.9-.5z"/></svg>
+        <h3>Understand your patterns</h3>
+        <p>Weekdays against weekends. Your night, your heart and your habits over weeks and months. Woah shows what actually moves your score, drawn so you can see it.</p>
+      </article>
+      <article class="pillar">
+        <svg class="mark-star" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10.5"/><path fill="currentColor" stroke="none" d="M12 6.4l1.7 3.6 3.9.5-2.8 2.7.7 3.9L12 15.2l-3.5 1.9.7-3.9-2.8-2.7 3.9-.5z"/></svg>
+        <h3>All of it personal to you</h3>
+        <p>Every answer is measured against your own baseline, not a population average. What is normal for you is the only thing that counts.</p>
+      </article>
+    </div>
+  </section>
 
   <section class="faq-section" aria-label="Questions and answers">
     <div class="faq-head">
