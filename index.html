@@ -86,6 +86,7 @@
     --line: rgba(255,255,255,0.10);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --shot-w: clamp(150px, 18vw, 208px);
+    --shots: 3; /* visible tiles; widened by the breakpoints below, never past 5 */
     --gap: clamp(14px, 2vw, 26px);
     --orb-d: min(150vw, 1400px);
   }
@@ -176,8 +177,8 @@
   .track {
     display: flex; align-items: center;
     gap: var(--gap);
-    /* exactly three screenshots wide, centred on the page */
-    width: calc(var(--shot-w) * 3 + var(--gap) * 2);
+    /* exactly --shots screenshots wide, centred on the page */
+    width: calc(var(--shot-w) * var(--shots) + var(--gap) * (var(--shots) - 1));
     max-width: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -212,6 +213,9 @@
     :root { --shot-w: min(62vw, 300px); }
     .track { width: var(--shot-w); }
   }
+  /* Wider screens: as many whole tiles as fit, capped at five. */
+  @media (min-width: 700px)  { :root { --shots: 4; } }
+  @media (min-width: 1180px) { :root { --shots: 5; } }
   .shot img {
     display: block; width: 100%; height: auto;
     aspect-ratio: 351 / 760;
