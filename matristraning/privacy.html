@@ -62,7 +62,7 @@
 <p>Den här policyn beskriver hur appen Matristräning hanterar dina uppgifter. Appen utvecklas av Petter Höglander, en enskild utvecklare i Sverige.</p>
 
 <h2>Kort sagt</h2>
-<p>Appen samlar inte in några uppgifter om dig. Den har ingen inloggning, ingen analys, inga annonser och ingen spårning. Allt du gör i appen stannar på din telefon.</p>
+<p>Appen har ingen inloggning, inga annonser och ingen spårning mellan appar. Dina resultat och din statistik stannar på din telefon. Appen skickar anonym användningsstatistik, som vilka skärmar som används och hur uppgifter besvaras, för att vi ska kunna förbättra den. Det går att stänga av i inställningarna.</p>
 
 <h2>1. Det som sparas på telefonen</h2>
 <p>Appen sparar följande lokalt, i appens eget lagringsutrymme:</p>
@@ -72,29 +72,40 @@
   <li>Dina genomförda test: datum, nivå, antal rätt, tid per uppgift och vilket alternativ du valde, så att genomgången kan öppnas igen</li>
   <li>Om köpet är gjort, som en kopia av Apples senaste svar så att appen fungerar utan nätanslutning</li>
 </ul>
-<p>Uppgifterna skickas aldrig till oss eller till någon annan. De ingår i telefonens vanliga säkerhetskopia om du har den påslagen, på samma sätt som för andra appar.</p>
+<p>Det här skickas aldrig till oss eller till någon annan. Det ingår i telefonens vanliga säkerhetskopia om du har den påslagen, på samma sätt som för andra appar.</p>
 
-<h2>2. Köp</h2>
-<p>Köpet som låser upp appen görs genom Apples App Store. Betalningen hanteras helt av Apple, enligt <a href="https://www.apple.com/legal/privacy/">Apples integritetspolicy</a>. Appen frågar App Store om köpet är gjort, och det är den enda gången appen använder nätet. Vi får inga personuppgifter om dig från Apple, bara sammanställd försäljningsstatistik.</p>
+<h2>2. Anonym användningsstatistik</h2>
+<p>För att förstå hur appen används, och kunna förbättra den, skickar appen händelser om användningen. En händelse är till exempel att appen startades, att en viss skärm visades, att en träning eller ett test startades, avslutades eller avbröts, att en uppgift besvarades (med uppgiftens nivå, regeltyper och om svaret var rätt), att köpsidan visades eller att ett köp gjordes.</p>
+<p>Med varje händelse följer:</p>
+<ul>
+  <li>Ett slumpat id som skapas när appen installeras. Det säger ingenting om vem du är, är inte kopplat till ditt Apple-konto eller ditt köp, och försvinner när du tar bort appen</li>
+  <li>Appens version och valt språk</li>
+</ul>
+<p>Det här skickas aldrig: namn, e-postadress, annonsidentifierare, plats, köpkvitto, eller något av det som sparas på telefonen enligt avsnitt 1. Appen spelar inte in skärmen och samlar inte automatiskt in vad du trycker på.</p>
+<p>Händelserna tas emot och lagras av PostHog, som är vårt personuppgiftsbiträde, på servrar inom EU. Som vid all internettrafik ser mottagaren din IP-adress när händelsen tas emot. Vi har stängt av platsuppslagning på den och sparar den inte. Inga profiler om enskilda användare skapas. Uppgifterna säljs inte, delas inte med andra och används inte för reklam.</p>
+<p>Den rättsliga grunden är vårt berättigade intresse av att förbättra appen. <strong>Du stänger av det under Inställningar → Dela anonym användningsstatistik.</strong> När det är avstängt skickas ingenting.</p>
 
-<h2>3. Det som inte finns</h2>
+<h2>3. Köp</h2>
+<p>Köpet som låser upp appen görs genom Apples App Store. Betalningen hanteras helt av Apple, enligt <a href="https://www.apple.com/legal/privacy/">Apples integritetspolicy</a>. Appen frågar App Store om köpet är gjort. Vi får inga personuppgifter om dig från Apple, bara sammanställd försäljningsstatistik.</p>
+
+<h2>4. Det som inte finns</h2>
 <ul>
   <li>Inget konto och ingen inloggning</li>
-  <li>Ingen analys, inga användarhändelser och inga kraschrapporter som skickas till oss</li>
-  <li>Inga annonser och ingen annonsidentifierare</li>
-  <li>Inga tjänster från tredje part i appen</li>
+  <li>Inga annonser, ingen annonsidentifierare och ingen spårning mellan appar och webbplatser</li>
+  <li>Ingen skärminspelning och inga kraschrapporter som skickas till oss</li>
+  <li>Inget programbibliotek från tredje part i appen. Användningsstatistiken skickas av kod vi själva har skrivit</li>
 </ul>
 
-<h2>4. Radera dina uppgifter</h2>
-<p>Under Inställningar → Nollställ statistik raderar du historik och regelstatistik. Tar du bort appen raderas allt som appen har sparat. Köpet finns kvar hos Apple och kan återställas om du installerar appen igen.</p>
+<h2>5. Radera dina uppgifter</h2>
+<p>Under Inställningar → Nollställ statistik raderar du historik och regelstatistik på telefonen. Tar du bort appen raderas allt som appen har sparat, också det slumpade id:t. Köpet finns kvar hos Apple och kan återställas om du installerar appen igen.</p>
 
-<h2>5. Barn</h2>
-<p>Appen samlar inte in uppgifter från någon, oavsett ålder.</p>
+<h2>6. Barn</h2>
+<p>Appen riktar sig inte till barn och behandlar alla användare lika, enligt den här policyn.</p>
 
-<h2>6. Dina rättigheter</h2>
-<p>Enligt dataskyddsförordningen (GDPR) har du rätt att få tillgång till, rätta och radera dina personuppgifter. Eftersom vi inte har några uppgifter om dig finns det inget hos oss att begära ut. Allt som finns ligger på din telefon och raderas enligt avsnitt 4. Du har rätt att lämna klagomål till Integritetsskyddsmyndigheten (IMY).</p>
+<h2>7. Dina rättigheter</h2>
+<p>Enligt dataskyddsförordningen (GDPR) har du rätt att få tillgång till, rätta och radera dina personuppgifter, och att invända mot behandling som bygger på berättigat intresse. Invänder gör du enklast genom att stänga av användningsstatistiken enligt avsnitt 2. Eftersom id:t är slumpat och inte visas någonstans kan vi inte koppla lagrade händelser till dig som person. Dina resultat och din statistik finns bara på din telefon. Du har rätt att lämna klagomål till Integritetsskyddsmyndigheten (IMY).</p>
 
-<h2>7. Ändringar</h2>
+<h2>8. Ändringar</h2>
 <p>Om appen ändras så att den hanterar uppgifter på ett annat sätt uppdateras den här sidan, och datumet överst visar när det skedde.</p>
 
 <hr>
@@ -112,7 +123,7 @@
 <p>This policy describes how the app Matrix Reasoning (Matristräning in Swedish) handles your data. The app is developed by Petter Höglander, an individual developer based in Sweden.</p>
 
 <h2>In short</h2>
-<p>The app does not collect any data about you. It has no login, no analytics, no ads and no tracking. Everything you do in the app stays on your phone.</p>
+<p>The app has no login, no ads and no tracking across apps. Your results and statistics stay on your phone. The app sends anonymous usage statistics, such as which screens are used and how tasks are answered, so that we can improve it. You can turn this off in Settings.</p>
 
 <h2>1. What is stored on your phone</h2>
 <p>The app stores the following locally, in its own storage area:</p>
@@ -122,29 +133,40 @@
   <li>Your completed tests: date, level, number correct, time per task and which option you chose, so that the review can be opened again</li>
   <li>Whether the purchase has been made, as a copy of Apple's latest answer so that the app works offline</li>
 </ul>
-<p>This data is never sent to us or to anyone else. It is included in your phone's regular backup if you have backups turned on, as for any other app.</p>
+<p>This is never sent to us or to anyone else. It is included in your phone's regular backup if you have backups turned on, as for any other app.</p>
 
-<h2>2. Purchase</h2>
-<p>The purchase that unlocks the app is made through Apple's App Store. Payment is handled entirely by Apple, under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The app asks the App Store whether the purchase has been made, and that is the only time the app uses the network. We receive no personal data about you from Apple, only aggregated sales figures.</p>
+<h2>2. Anonymous usage statistics</h2>
+<p>To understand how the app is used, and to improve it, the app sends events about usage. An event is, for example, that the app was opened, that a certain screen was shown, that a practice session or a test was started, finished or abandoned, that a task was answered (with the task's level, rule types and whether the answer was correct), that the purchase page was shown, or that a purchase was made.</p>
+<p>Each event carries:</p>
+<ul>
+  <li>A random ID created when the app is installed. It says nothing about who you are, is not linked to your Apple account or your purchase, and disappears when you delete the app</li>
+  <li>The app version and the chosen language</li>
+</ul>
+<p>The following is never sent: name, email address, advertising identifier, location, purchase receipt, or anything stored on your phone as described in section 1. The app does not record the screen and does not automatically collect what you tap.</p>
+<p>The events are received and stored by PostHog, acting as our data processor, on servers within the EU. As with all internet traffic, the recipient sees your IP address when the event is received. We have turned off location lookup on it and do not store it. No profiles of individual users are created. The data is not sold, not shared with others and not used for advertising.</p>
+<p>The legal basis is our legitimate interest in improving the app. <strong>You turn it off under Settings → Share anonymous usage statistics.</strong> When it is off, nothing is sent.</p>
 
-<h2>3. What does not exist</h2>
+<h2>3. Purchase</h2>
+<p>The purchase that unlocks the app is made through Apple's App Store. Payment is handled entirely by Apple, under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The app asks the App Store whether the purchase has been made. We receive no personal data about you from Apple, only aggregated sales figures.</p>
+
+<h2>4. What does not exist</h2>
 <ul>
   <li>No account and no login</li>
-  <li>No analytics, no usage events and no crash reports sent to us</li>
-  <li>No ads and no advertising identifier</li>
-  <li>No third-party services in the app</li>
+  <li>No ads, no advertising identifier and no tracking across apps and websites</li>
+  <li>No screen recording and no crash reports sent to us</li>
+  <li>No third-party software library in the app. The usage statistics are sent by code we have written ourselves</li>
 </ul>
 
-<h2>4. Deleting your data</h2>
-<p>Settings → Reset statistics deletes your history and rule statistics. Deleting the app removes everything the app has stored. The purchase stays with Apple and can be restored if you install the app again.</p>
+<h2>5. Deleting your data</h2>
+<p>Settings → Reset statistics deletes your history and rule statistics on the phone. Deleting the app removes everything the app has stored, including the random ID. The purchase stays with Apple and can be restored if you install the app again.</p>
 
-<h2>5. Children</h2>
-<p>The app does not collect data from anyone, regardless of age.</p>
+<h2>6. Children</h2>
+<p>The app is not directed at children and treats all users alike, as described in this policy.</p>
 
-<h2>6. Your rights</h2>
-<p>Under the GDPR you have the right to access, correct and delete your personal data. Since we hold no data about you, there is nothing to request from us. Everything that exists is on your phone and is deleted as described in section 4. You have the right to lodge a complaint with your local data protection authority; in Sweden that is the Swedish Authority for Privacy Protection (IMY).</p>
+<h2>7. Your rights</h2>
+<p>Under the GDPR you have the right to access, correct and delete your personal data, and to object to processing based on legitimate interest. The simplest way to object is to turn off usage statistics as described in section 2. Because the ID is random and not shown anywhere, we cannot link stored events to you as a person. Your results and statistics exist only on your phone. You have the right to lodge a complaint with your local data protection authority; in Sweden that is the Swedish Authority for Privacy Protection (IMY).</p>
 
-<h2>7. Changes</h2>
+<h2>8. Changes</h2>
 <p>If the app changes so that it handles data differently, this page is updated and the date at the top shows when.</p>
 
 <hr>
